@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>Janela Pop-up em HTML5</title>
+		
+		<link rel = "stylesheet" 
+         href = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-blue.min.css">
+      <script src = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js">
+      </script>
+      <link rel = "stylesheet" 
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel = "stylesheet" href = "../../styles.css">
+		
+		<style>
+			textarea {
+				border: none;
+				resize: none;
+				background-color: #c9cacc;
+			}
+			span#docname {
+				padding-right: 40%;
+			}
+		</style>
+		
+		<script>
+			function abrir(URL) {
+				var width = 500;
+				var height = 500;
+				var left = 99;
+				var top = 99;
+				window.open(URL,'janela', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+			}
+
+			function abrir2() {
+				alert("ISSO É UM POP-UP");
+			}
+</script>
+		
+		<script>
+    var dialog = document.querySelector('dialog');
+    var showDialogButton = document.querySelector('#show-dialog');
+    if (! dialog.showModal) {
+      dialogPolyfill.registerDialog(dialog);
+    }
+    showDialogButton.addEventListener('click', function() {
+      dialog.showModal();
+    });
+    dialog.querySelector('.close').addEventListener('click', function() {
+      dialog.close();
+    });
+  </script>
+	</head>
+	<body>
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header">
+				<div class="mdl-layout__header-row">
+					<!-- Title -->
+					<span class="mdl-layout-title">Janela Pop-up em HTML5</span>
+					<!-- Add spacer, to align navigation to the right -->
+					<div class="mdl-layout-spacer"></div>
+				</div>
+			</header>
+			<div class="mdl-layout__drawer">
+				<span class="mdl-layout-title">Exemplos</span>
+				<nav class="mdl-navigation">
+					<a class="mdl-navigation__link" onclick="abrir2()">Exemplo 1</a>
+					<a class="mdl-navigation__link" href="javascript:abrir('popup1.html');">Exemplo 2</a>
+				</nav>
+			</div>
+		<div align="center" style="padding-top: 12%;">
+			<h4><a onclick="abrir2();">Exemplo 1</a></h4>
+			<h6><span>Código</span></h6>
+			<p><span id="docname">index.html</span></p>
+			<textarea rows='17' cols='80' readonly="yes">
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Exemplo 1</title>
+        <script>
+          function abrir2() {
+            alert("ISSO É UM POP-UP");
+          }
+        </script>
+  </head>
+  <body>
+    <div>
+      <a onclick="abrir2();">Exemplo 1</a>
+    </div>
+  </body>
+</html>
+		</textarea>
+		<div align="center" id="apenaspc">
+			<h4><a href="javascript:abrir('popup1.html');">Exemplo 2</a></h4>
+			<h6><span>Código</span></h6>
+			<p><span id="docname">index.html</span></p>
+			<textarea rows='24' cols='80' readonly="yes">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exemplo 2</title>
+      <script>
+        function abrir(URL) {
+		  var width = 500;
+		  var height = 500;
+		  var left = 99;
+		  var top = 99;
+		  window.open(URL,'janela', 'width='+width+', height='+height+', top='+top+', left='+left+', scrollbars=yes, status=no, toolbar=no, location=no, directories=no, menubar=no, resizable=no, fullscreen=no');
+        }
+    </script>
+  </head>
+  <body>
+    <div>
+      <a href="javascript:abrir('popup.html');">Exemplo 2</a>
+    </div>
+  </body>
+</html>
+		</textarea>
+			<p><span id="docname">popup.html</span></p>
+			<textarea rows='14' cols='80' readonly="yes">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pop-up Exemplo 2</title>
+  </head>
+  <body>
+    <div>
+      <div align="center">
+        <h1>ISSO É UM POP-UP</h1>
+      </div>
+    </div>
+  </body>
+</html>
+		</textarea>
+		</div>
+		</div>
+	</body>
+</html>
