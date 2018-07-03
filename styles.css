@@ -153,7 +153,7 @@ img {
 
 @media screen and (min-width: 600px) {
 
-#apenasmobile {
+#onlymobile {
 	visibility: invisible;
 	display: none;
 }
