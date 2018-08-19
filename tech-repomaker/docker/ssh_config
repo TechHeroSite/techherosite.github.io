@@ -1,7 +1,0 @@
-
-# Automatically add new host keys to the user known hosts files.
-# This is required for pushing to remote servers in the background.
-
-Host *
-  StrictHostKeyChecking no
-
