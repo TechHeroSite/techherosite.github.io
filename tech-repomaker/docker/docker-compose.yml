@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - ${REPOMAKER_PATH}/pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  web:
+    image: registry.gitlab.com/fdroid/repomaker:latest
+    hostname: ${REPOMAKER_HOSTNAME}
+    domainname: ${REPOMAKER_HOSTNAME}
+    env_file:
+      - .env
+    command: bash -c './wait-for db:5432 -- python3 manage.py migrate && ./httpd-foreground'
+    volumes:
+      - ${REPOMAKER_PATH}/data:/repomaker/data
+    ports:
+      - "${REPOMAKER_PORT}:80"
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  tasks:
+    image: registry.gitlab.com/fdroid/repomaker:latest
+    env_file:
+      - .env
+    command: bash -c './wait-for web:80 -- su - www-data -p -s /bin/bash -c "cd /repomaker && python3 manage.py process_tasks"'
+    volumes:
+      - ${REPOMAKER_PATH}/data:/repomaker/data
+    depends_on:
+      - db
+      - web
+    restart: unless-stopped
+
+# vim: set tabstop=2:softtabstop=2:shiftwidth=2
