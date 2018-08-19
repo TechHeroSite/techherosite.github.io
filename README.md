@@ -1,7 +1,6 @@
 # techherosite.github.io
 Hello! This is my site where I put codes that I do.
 
-## English
 ### Site menus
 The site is divided into 4 menus. These being: 
 
