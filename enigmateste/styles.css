@@ -1,0 +1,23 @@
+body {
+	background-color: black;
+}
+
+#dica-img {
+	padding-top: 30px;
+}
+
+@media screen and (max-width: 749px) {
+	
+#dica-img {
+	width: 75%;
+}
+
+}
+
+@media screen and (min-width: 750px) {
+	
+#dica-img {
+	width: 47%;
+}
+
+}
