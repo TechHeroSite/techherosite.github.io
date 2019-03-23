@@ -5,11 +5,11 @@ var candies = {
     nbrEaten : 0,
     nbrThrown : 0,
     nbrTotal : 0, // The total number we earned in all times
-    candiesPerSecond : 9999,
+    candiesPerSecond : 9999999999999,
     
     // Functions
     onload : function(){
-        candies.setNbrOwned(0); // We first have 0 candies
+        candies.setNbrOwned(9999999999); // We first have 0 candies
     },
     
     eat : function(){
