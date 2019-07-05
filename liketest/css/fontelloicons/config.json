@@ -371,6 +371,12 @@
       "css": "floppy",
       "code": 59403,
       "src": "fontawesome"
+    },
+    {
+      "uid": "fa9a0b7e788c2d78e24cef1de6b70e80",
+      "css": "brush",
+      "code": 61948,
+      "src": "fontawesome"
     }
   ]
 }

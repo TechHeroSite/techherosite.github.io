@@ -39,7 +39,7 @@
 	<body onload="loadGame()">
 		<div id="TopActionBar" style="width: 100%; background: white; height: 34px; border-bottom: 1px solid black; position: fixed; margin-top: -5px;">
 			<div id="LikeTopBar" style="float: left; margin-left: 5px; padding-top: 3px;">
-				<i id="mini-like-icon" class="material-icons" style="vertical-align: text-top; color: black;">thumb_up</i>
+				<i id="mini-like-icon" class="material-icons likelabelicon" style="vertical-align: text-top; color: black;">thumb_up</i>
 				<span id="LabelLikes">0</span>
 			</div>
 		</div>
@@ -48,7 +48,7 @@
 			<div id="LikePage" class="TabOpening">
 			<div id="LikeDiv" style="width: 100%;">
 				<div id="LikeBtnDiv" onClick="likeClick(lpc)" title="Like">
-					<i onmouseover="showLikeOverlay()" onmouseout="hideLikeOverlay()" class="material-icons" id="like-icon" style="font-size: 180px; color: black; display: inline-flex; vertical-align: middle;">thumb_up</i>
+					<i onmouseover="showLikeOverlay()" onmouseout="hideLikeOverlay()" class="material-icons likeicon" id="like-icon" style="font-size: 180px; color: black; display: inline-flex; vertical-align: middle;">thumb_up</i>
 				</div>
 				<div>
 					<span id="likestxt">You have 0 likes</span><br>
@@ -74,16 +74,29 @@
 				</div>
 			</div>
 			<div id="ShopPage" class="TabOpening" style="display: none; visibility: hidden;">
-			<div id="ShopTab" style="width: 49.5%; float: left; margin-bottom: 95px;">
-				<center><h4>Shop</h4></center>
+		<table id="MenuTabsTable" style="width: 100%;">
+			<td class="commontab" id="MenuShopTab" onClick="showShopTab()">
+				<center>
+					<p></p>
+					<p id="LabelMenu">Common Upgrades</p>
+				</center>
+			</td>
+			<td id="MenuUpgradesTab" onClick="showUpgradesTab()">
+				<center>
+					<p></p>
+					<p id="LabelMenu">Special Upgrades <i class="material-icons" style="color: red; vertical-align: middle;" id="newupgradeicon">new_releases</i></p>
+				</center>
+			</td>
+		</table>
+			<div id="ShopTab" style="width: 100%; float: left; margin-bottom: 100px; margin-top: 15px;">
 				<div id="FanDiv" style="width: 100%;">
 					<center>
-					<div id="AddFan" class="rounded">
+					<div class="shopitem1" id="AddFan" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="addFan()" title="Buy +1 Fan">
+								<div class="shopitem1btn" id="BuyButton" onClick="addFan()" title="Buy +1 Fan">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem1icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">+1 Fan</span>
 									</center>
 								</div>
@@ -102,12 +115,12 @@
 					<br>
 				</div>
 				<div id="SuperFanDiv">
-					<div id="AddSuperFan" class="rounded">
+					<div class="shopitem2" id="AddSuperFan" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="addSuperFan()" title="Buy +1 Super Fan">
+								<div class="shopitem2btn" id="BuyButton" onClick="addSuperFan()" title="Buy +1 Super Fan">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem2icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">+1 Super Fan</span>
 									</center>
 								</div>
@@ -125,12 +138,12 @@
 					<br>
 				</div>
 				<div id="MegaFanDiv">
-					<div id="AddMegaFan" class="rounded">
+					<div class="shopitem3" id="AddMegaFan" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="addMegaFan()" title="Buy +1 Mega Fan">
+								<div class="shopitem3btn" id="BuyButton" onClick="addMegaFan()" title="Buy +1 Mega Fan">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem3icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">+1 Mega Fan</span>
 									</center>
 								</div>
@@ -149,12 +162,12 @@
 					<br>
 				</div>
 				<div id="UltraFanDiv">
-					<div id="AddUltraFan" class="rounded">
+					<div class="shopitem4" id="AddUltraFan" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="addUltraFan()" title="Buy +1 Ultra Fan">
+								<div class="shopitem4btn" id="BuyButton" onClick="addUltraFan()" title="Buy +1 Ultra Fan">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem4icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">+1 Ultra Fan</span>
 									</center>
 								</div>
@@ -172,12 +185,12 @@
 					<br>
 				</div>
 				<div id="HiperFanDiv">
-					<div id="AddHiperFan" class="rounded">
+					<div class="shopitem5" id="AddHiperFan" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="addHiperFan()" title="Buy +1 Hiper Fan">
+								<div class="shopitem5btn" id="BuyButton" onClick="addHiperFan()" title="Buy +1 Hiper Fan">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem5icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">+1 Hiper Fan</span>
 									</center>
 								</div>
@@ -195,12 +208,12 @@
 					<br>
 				</div>
 				<div id="BotDiv">
-					<div id="AddBot" class="rounded">
+					<div class="shopitem6" id="AddBot" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="addBot()" title="Buy +1 Bot">
+								<div class="shopitem6btn" id="BuyButton" onClick="addBot()" title="Buy +1 Bot">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem6icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">+1 Bot</span>
 									</center>
 								</div>
@@ -218,12 +231,12 @@
 					<br>
 				</div>
 				<div id="ClickDiv">
-					<div id="AddClick" class="rounded">
+					<div class="shopitem7" id="AddClick" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="addClick()" title="Buy +1 LPC (Likes per Click)">
+								<div class="shopitem7btn" id="BuyButton" onClick="addClick()" title="Buy +1 LPC (Likes per Click)">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem7icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">+1 LPC<br> (Clicks)</span>
 									</center>
 								</div>
@@ -237,18 +250,17 @@
 							</td>
 						</table>
 					</div>
-					<br id="brDoubleClick">
 				</div>
 			</div>
-			<div id="UpgradeTab" style="width: 49.5%; float: right; margin-bottom: 80px;">
-				<center><h4>Upgrade</h4></center>
+			<div id="UpgradeTab" style="width: 100%; float: right; margin-bottom: 100px; display: none; visibility: hidden; margin-top: 15px;">
+				<!--<br id="brDoubleClick">-->
 				<div id="FanDiv">
-					<div id="DoubleFans" class="rounded">
+					<div class="shopitem8" id="DoubleFans" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="doubleFan()" title="Buy x2 Fans (LPS)">
+								<div class="shopitem8btn" id="BuyButton" onClick="doubleFan()" title="Buy x2 Fans (LPS)">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem8icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">x2 Fans<br> (LPS)</span>
 									</center>
 								</div>
@@ -265,12 +277,12 @@
 					<br id="brDoubleFan">
 				</div>
 				<div id="SuperFanDiv">
-					<div id="DoubleSuperFans" class="rounded">
+					<div class="shopitem9" id="DoubleSuperFans" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="doubleSuperFan()" title="Buy x2 Super Fans (LPS)">
+								<div class="shopitem9btn" id="BuyButton" onClick="doubleSuperFan()" title="Buy x2 Super Fans (LPS)">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem9icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">x2 Super Fans<br> (LPS)</span>
 									</center>
 								</div>
@@ -287,12 +299,12 @@
 					<br id="brDoubleSuper">
 				</div>
 				<div id="MegaFanDiv">
-					<div id="DoubleMegaFans" class="rounded">
+					<div class="shopitem10" id="DoubleMegaFans" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="doubleMegaFan()" title="Buy x2 Mega Fans (LPS)">
+								<div class="shopitem10btn" id="BuyButton" onClick="doubleMegaFan()" title="Buy x2 Mega Fans (LPS)">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem10icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">x2 Mega Fans<br> (LPS)</span>
 									</center>
 								</div>
@@ -309,12 +321,12 @@
 					<br id="brDoubleMega">
 				</div>
 				<div id="UltraFanDiv">
-					<div id="DoubleUltraFans" class="rounded">
+					<div class="shopitem11" id="DoubleUltraFans" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="doubleUltraFan()" title="Buy x2 Ultra Fans (LPS)">
+								<div class="shopitem11btn" id="BuyButton" onClick="doubleUltraFan()" title="Buy x2 Ultra Fans (LPS)">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem11icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">x2 Ultra Fans<br> (LPS)</span>
 									</center>
 								</div>
@@ -331,12 +343,12 @@
 					<br id="brDoubleUltra">
 				</div>
 				<div id="HiperFanDiv">
-					<div id="DoubleHiperFans" class="rounded">
+					<div class="shopitem12" id="DoubleHiperFans" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="doubleHiperFan()" title="Buy x2 Hiper Fans (LPS)">
+								<div class="shopitem12btn" id="BuyButton" onClick="doubleHiperFan()" title="Buy x2 Hiper Fans (LPS)">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem12icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">x2 Hiper Fans<br> (LPS)</span>
 									</center>
 								</div>
@@ -353,12 +365,12 @@
 					<br id="brDoubleHiper">
 				</div>
 				<div id="BotDiv">
-					<div id="DoubleBots" class="rounded">
+					<div class="shopitem13" id="DoubleBots" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="doubleBots()" title="Buy x2 Bots (LPS)">
+								<div class="shopitem13btn" id="BuyButton" onClick="doubleBots()" title="Buy x2 Bots (LPS)">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem13icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">x2 Bots<br> (LPS)</span>
 									</center>
 								</div>
@@ -375,12 +387,12 @@
 					<br id="brDoubleBot">
 				</div>
 				<div id="ClickDiv">
-					<div id="DoubleClick" class="rounded">
+					<div class="shopitem14" id="DoubleClick" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div id="BuyButton" onClick="doubleClick()" title="Buy x2 LPC (Likes per Click)">
+								<div class="shopitem14btn" id="BuyButton" onClick="doubleClick()" title="Buy x2 LPC (Likes per Click)">
 									<center>
-										<i class="material-icons" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
+										<i class="material-icons shopitem14icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">x2 LPC<br> (Clicks)</span>
 									</center>
 								</div>
@@ -399,33 +411,44 @@
 			</div>
 			</center>
 			<div id="SettingsPage" class="TabOpening" style="display: none; visibility: hidden;">
-				<center><h4>Options</h4></center>
+				<center><h4>Config.</h4></center>
 				<div id="CategoryDiv">
 					<div>
-						<b id="Category">Reset</b>
-						<hr>
-						<div id="SettingsOption" class="reset" title="Reset the game">
-							<i class="fontelloicons icon-trash" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
-							<span>Erase data</span>
+						<b id="Category">Dark Theme</b>
+						<hr class="confighr1" style="border: 1px solid black;">
+						<div class="configoption1" id="SettingsOption" onclick="enableDisableDarkTheme()">
+							<i class="fontelloicons icon-brush option1icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+							<span class="darktheme" title="Enable/Disable dark theme">Dark theme</span>
+							<i id="darkthemedisabled" style="float: right; padding-right: 5px;" class="material-icons">check_box_outline_blank</i>
+							<i id="darkthemeenabled" style="float: right; padding-right: 5px; display: none; visibility: hidden;" class="material-icons">check_box</i>
 						</div>
 					</div>
 					<br>
 					<div>
 						<b id="Category">Save and Load</b>
-						<hr>
-						<div id="SettingsOption" title="Save the game" onclick="saveGame()">
-							<i class="fontelloicons icon-save" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+						<hr class="confighr2" style="border: 1px solid black;">
+						<div class="configoption2" id="SettingsOption" title="Save the game" onclick="saveGame()">
+							<i class="fontelloicons icon-save option2icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
 							<span>Save game</span>
 						</div>
-						<div id="SettingsOption" title="Load the game" onclick="loadGame()">
-							<i class="fontelloicons icon-load" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+						<div class="configoption3" id="SettingsOption" title="Load the game" onclick="loadGame()">
+							<i class="fontelloicons icon-load option3icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
 							<span>Load game</span>
 						</div>
-						<div id="SettingsOption" onclick="enableDisableAutoSave()">
-							<i class="fontelloicons icon-save" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
-							<span class="autosave" title="Enable auto save">Auto save</span>
+						<div class="configoption4" id="SettingsOption" onclick="enableDisableAutoSave()">
+							<i class="fontelloicons icon-save option4icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+							<span class="autosave" title="Enable/Disable auto save">Auto save</span>
 							<i id="savedisabled" style="float: right; padding-right: 5px; display: none; visibility: hidden;" class="material-icons">check_box_outline_blank</i>
 							<i id="saveenabled" style="float: right; padding-right: 5px;" class="material-icons">check_box</i>
+						</div>
+					</div>
+					<br>
+					<div>
+						<b id="Category">Reset</b>
+						<hr class="confighr3" style="border: 1px solid black;">
+						<div class="reset configoption5" id="SettingsOption" title="Reset the game">
+							<i class="fontelloicons icon-trash option5icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+							<span>Erase data</span>
 						</div>
 					</div>
 				</div>
@@ -433,33 +456,33 @@
 				<div id="CategoryDiv">
 					<div>
 						<b id="Category">About</b>
-						<hr>
-						<div id="SettingsOption" title="Version: 1.3.0" onclick="unknfunc()">
-							<i class="fontelloicons icon-info-circled" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+						<hr class="confighr4" style="border: 1px solid black;">
+						<div class="configoption6" id="SettingsOption" title="Version: 1.3.0" onclick="unknfunc()">
+							<i class="fontelloicons icon-info-circled option6icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
 							<span>Version: 1.3.0</span>
 						</div>
-						<div id="SettingsOption" title="Developed by: TechHero">
-							<i class="fontelloicons icon-code" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+						<div class="configoption7" id="SettingsOption" title="Developed by: TechHero">
+							<i class="fontelloicons icon-code option7icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
 							<span>Developed by: TechHero</span>
 						</div>
-						<div id="SettingsOption" class="showchangelog" title="Open the changelog">
-							<i class="fontelloicons icon-changelog" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+						<div class="showchangelog configoption8" id="SettingsOption" title="Open the changelog">
+							<i class="fontelloicons icon-changelog option8icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
 							<span>Open changelog</span>
 						</div>
-						<div id="SettingsOption" href="https://likeclicker.reddit.com" target="_blank" title="Subreddit of the game">
-							<i class="fontelloicons icon-reddit" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
+						<div class="configoption9" id="SettingsOption" href="https://likeclicker.reddit.com" target="_blank" title="Subreddit of the game">
+							<i class="fontelloicons icon-reddit option9icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
 							<a>Reddit</a>
 						</div>
-						<div id="SettingsOption" href="https://github.com/TechnoHerobrine/Like-Clicker" target="_blank" title="GitHub Repository of the game">
-							<i class="fontelloicons icon-github" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
+						<div class="configoption10" id="SettingsOption" href="https://github.com/TechnoHerobrine/Like-Clicker" target="_blank" title="GitHub Repository of the game">
+							<i class="fontelloicons icon-github option10icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
 							<a>GitHub</a>
 						</div>
-						<div id="SettingsOption" href="https://twitter.com/intent/follow?ref_src=twsrc%5Etfw&region=follow_link&screen_name=LikeClicker&tw_p=followbutton" target="_blank" title="Follow Like Clicker on Twitter">
-							<i class="fontelloicons icon-twitter" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
+						<div class="configoption11" id="SettingsOption" href="https://twitter.com/intent/follow?ref_src=twsrc%5Etfw&region=follow_link&screen_name=LikeClicker&tw_p=followbutton" target="_blank" title="Follow Like Clicker on Twitter">
+							<i class="fontelloicons icon-twitter option11icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
 							<a>Follow Like Clicker on Twitter</a>
 						</div>
-						<div  id="SettingsOption" href="https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&text=Hey%2C%20I%27m%20playing%20Like%20Clicker!%20Play%20you%20too.%0D%0A&tw_p=tweetbutton&via=LikeClicker" target="_blank" title="Share on Twitter">
-							<i class="fontelloicons icon-twitter" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
+						<div class="configoption12" id="SettingsOption" href="https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&text=Hey%2C%20I%27m%20playing%20Like%20Clicker!%20Play%20you%20too.%0D%0A&tw_p=tweetbutton&via=LikeClicker" target="_blank" title="Share on Twitter">
+							<i class="fontelloicons icon-twitter option12icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
 							<a>Share on Twitter</a>
 						</div>
 						<!--<a id="SettingsOption" href="likeclicker.apk" target="_blank" title="Get Like Clicker for Android" download>Get Like Clicker for Android</a>-->
@@ -468,13 +491,13 @@
 				<br>
 				<div id="CategoryDiv">
 					<b id="Category">More games</b>
-					<hr>
-					<a id="SettingsOption" href="https://technoherobrine.github.io/hillclimbhcr2mod/download/" target="_blank" title="Hill Climb HCR2 Mod">
-						<i class="fontelloicons icon-android" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+					<hr class="confighr5" style="border: 1px solid black;">
+					<a class="configoption13" id="SettingsOption" href="https://technoherobrine.github.io/hillclimbhcr2mod/download/" target="_blank" title="Hill Climb HCR2 Mod">
+						<i class="fontelloicons icon-android option13icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
 						<span>Hill Climb HCR2 Mod</span>
 					</a>
-					<a id="SettingsOption" href="https://gamejolt.com/games/helpysadventure/368451" target="_blank" title="Helpy's Adventure">
-						<i class="fontelloicons icon-desktop" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+					<a class="configoption14" id="SettingsOption" href="https://gamejolt.com/games/helpysadventure/368451" target="_blank" title="Helpy's Adventure">
+						<i class="fontelloicons icon-desktop option14icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
 						<span>Helpy's Adventure</span>
 					</a>
 				</div>
@@ -484,22 +507,22 @@
 			<td id="MenuCellShop" onClick="showShop()">
 				<center>
 					<p></p>
-					<i class="material-icons" style="color: black; display: inline-flex; vertical-align: middle;">shopping_cart</i>
-					<p id="LabelMenu">Shop</p>
+					<i class="material-icons menuicon1" style="color: black; display: inline-flex; vertical-align: middle;">shopping_cart</i>
+					<p id="LabelMenu">Upgrades <i class="material-icons" style="color: red; vertical-align: middle;" id="newupgradeicon2">new_releases</i></p>
 				</center>
 			</td>
 			<td id="MenuCellHome" onClick="showHome()">
 				<center>
 					<p></p>
-					<i class="material-icons" style="color: black; display: inline-flex; vertical-align: middle;">thumb_up</i>
+					<i class="material-icons menuicon2" style="color: black; display: inline-flex; vertical-align: middle;">thumb_up</i>
 					<p id="LabelMenu">Likes</p>
 				</center>
 			</td>
 			<td id="MenuCellSettings" onClick="showSettings()">
 				<center>
 					<p></p>
-					<i class="material-icons" style="color: black; display: inline-flex; vertical-align: middle;">settings</i>
-					<p id="LabelMenu">Options</p>
+					<i class="material-icons menuicon3" style="color: black; display: inline-flex; vertical-align: middle;">settings</i>
+					<p id="LabelMenu">Config.</p>
 				</center>
 			</td>
 		</table>

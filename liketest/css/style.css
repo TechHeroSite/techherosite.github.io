@@ -107,6 +107,10 @@
     content: '\f02f';
 }
 
+.fontelloicons.icon-brush:before {
+    content: '\f1fc';
+}
+
 input {
     font-size: 100%;
 }
@@ -245,17 +249,27 @@ body {
 	bottom: 0px;
 }
 
-#MenuCellShop, #MenuCellHome, #MenuCellSettings{
+#MenuUpgradesTab {
+	width: 100%;
+}
+
+#MenuCellShop, #MenuCellHome, #MenuCellSettings {
 	width: 25%;
 	background: #c1c1c1;
 	cursor: pointer;
 }
 
-#MenuCellShop, #MenuCellHome {
+#MenuShopTab, #MenuUpgradesTab {
+	width: 50%;
+	background: #c1c1c1;
+	cursor: pointer;
+}
+
+#MenuCellShop, #MenuCellHome, #MenuShopTab {
 	border-right: 1px solid black;
 }
 
-#MenuCellHome {
+#MenuCellHome, #MenuShopTab {
 	background: #a3a3a3;
 }
 

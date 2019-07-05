@@ -22,6 +22,7 @@ var doubleHiperFansPurchased = 0;
 var doubleBotsPurchased = 0;
 var doubleClickPurchased = 0;
 var autoSaveEnabled = 1;
+var darkThemeEnabled = 0;
 var addClickCost;
 var fanCost = 10;
 var superFanCost = 100;
@@ -50,7 +51,7 @@ document.getElementById('doubleHiperFanCost').innerHTML = nf.format(doubleHiperF
 document.getElementById('bots').innerHTML = nf.format(bots);
 document.getElementById('botCost').innerHTML = nf.format(botCost);
 document.getElementById('doubleBotsCost').innerHTML = nf.format(doubleBotsCost);
-document.getElementById('lpc').innerHTML = nf.format(lpc);
+document.getElementById('lpc').innerHTML = "LPC: " + nf.format(lpc);
 document.getElementById('addClickCost').innerHTML = nf.format(addClickCost);
 document.getElementById('doubleClickCost').innerHTML = nf.format(doubleClickCost);
 
@@ -123,6 +124,7 @@ function resetGame(){
 	superfans = 0;
 	megafans = 0;
 	ultrafans = 0;
+	hiperfans = 0;
 	bots = 0;
 	lpc = 1;
 	fanCost = 10;
@@ -172,7 +174,7 @@ function resetGame(){
 	document.getElementById('bots').innerHTML = nf.format(bots);
 	document.getElementById('botCost').innerHTML = nf.format(botCost);
 	document.getElementById('doubleBotsCost').innerHTML = nf.format(doubleBotsCost);
-	document.getElementById('lpc').innerHTML = nf.format(lpc);
+	document.getElementById('lpc').innerHTML = "LPC: " + nf.format(lpc);
 	document.getElementById('addClickCost').innerHTML = nf.format(addClickCost);
 	document.getElementById('doubleClickCost').innerHTML = nf.format(doubleClickCost);
 	doubleFansPurchased = 0;
@@ -181,7 +183,9 @@ function resetGame(){
 	doubleUltraFansPurchased = 0;
 	doubleHiperFansPurchased = 0;
 	doubleBotsPurchased = 0;
+	doubleClickPurchased = 0;
 	autoSaveEnabled = 1;
+	darkThemeEnabled = 0;
 	localStorage.clear();
 };
 
@@ -221,6 +225,10 @@ function doubleFan(){
 		doubleFanLPS();
 		updateLPS();                                     //update dps
 		doubleFansPurchased = 1;
+		document.getElementById("newupgradeicon").style.display = "none";
+		document.getElementById("newupgradeicon").style.visibility = "hidden";
+		document.getElementById("newupgradeicon2").style.display = "none";
+		document.getElementById("newupgradeicon2").style.visibility="hidden";
     }
 	else {
 		notEnoughLikes();
@@ -284,6 +292,10 @@ function doubleSuperFan(){
 		doubleSuperFanLPS();
 		updateLPS();
 		doubleSuperFansPurchased = 1;
+		document.getElementById("newupgradeicon").style.display = "none";
+		document.getElementById("newupgradeicon").style.visibility = "hidden";
+		document.getElementById("newupgradeicon2").style.display = "none";
+		document.getElementById("newupgradeicon2").style.visibility="hidden";
     }
 	else {
 		notEnoughLikes();
@@ -347,6 +359,10 @@ function doubleMegaFan(){
 		doubleMegaFanLPS();
 		updateLPS();
 		doubleMegaFansPurchased = 1;
+		document.getElementById("newupgradeicon").style.display = "none";
+		document.getElementById("newupgradeicon").style.visibility = "hidden";
+		document.getElementById("newupgradeicon2").style.display = "none";
+		document.getElementById("newupgradeicon2").style.visibility="hidden";
     }
 	else {
 		notEnoughLikes();
@@ -410,6 +426,10 @@ function doubleUltraFan(){
 		doubleUltraFanLPS();
 		updateLPS();
 		doubleUltraFansPurchased = 1;
+		document.getElementById("newupgradeicon").style.display = "none";
+		document.getElementById("newupgradeicon").style.visibility = "hidden";
+		document.getElementById("newupgradeicon2").style.display = "none";
+		document.getElementById("newupgradeicon2").style.visibility="hidden";
     }
 	else {
 		notEnoughLikes();
@@ -473,6 +493,10 @@ function doubleHiperFan(){
 		doubleHiperFanLPS();
 		updateLPS();
 		doubleHiperFansPurchased = 1;
+		document.getElementById("newupgradeicon").style.display = "none";
+		document.getElementById("newupgradeicon").style.visibility = "hidden";
+		document.getElementById("newupgradeicon2").style.display = "none";
+		document.getElementById("newupgradeicon2").style.visibility="hidden";
     }
 	else {
 		notEnoughLikes();
@@ -536,6 +560,10 @@ function doubleBots(){
 		doubleBotsLPS();
 		updateLPS();
 		doubleBotsPurchased = 1;
+		document.getElementById("newupgradeicon").style.display = "none";
+		document.getElementById("newupgradeicon").style.visibility = "hidden";
+		document.getElementById("newupgradeicon2").style.display = "none";
+		document.getElementById("newupgradeicon2").style.visibility="hidden";
     }
 	else {
 		notEnoughLikes();
@@ -603,6 +631,10 @@ function doubleClick(){
 		removeDoubleClick();
 		updateLPC();
 		doubleClickPurchased = 1;
+		document.getElementById("newupgradeicon").style.display = "none";
+		document.getElementById("newupgradeicon").style.visibility = "hidden";
+		document.getElementById("newupgradeicon2").style.display = "none";
+		document.getElementById("newupgradeicon2").style.visibility="hidden";
     }
 	else {
 		notEnoughLikes();
@@ -614,9 +646,9 @@ function removeDoubleClick()
    var rmvDoubleClick = document.getElementById("DoubleClick");
    rmvDoubleClick.style.display="none";
    rmvDoubleClick.style.visibility="hidden";
-   var rmvDoubleClickBR = document.getElementById("brDoubleClick");
+   /*var rmvDoubleClickBR = document.getElementById("brDoubleClick");
    rmvDoubleClickBR.style.display="none";
-   rmvDoubleClickBR.style.visibility="hidden";
+   rmvDoubleClickBR.style.visibility="hidden";*/
 }
 
 function recreateDoubleClick()
@@ -624,9 +656,9 @@ function recreateDoubleClick()
    var rctDoubleClick = document.getElementById("DoubleClick"); 
    rctDoubleClick.style.display="block"; 
    rctDoubleClick.style.visibility="initial";
-   var rctDoubleClickBR = document.getElementById("brDoubleClick"); 
+   /*var rctDoubleClickBR = document.getElementById("brDoubleClick"); 
    rctDoubleClickBR.style.display="block"; 
-   rctDoubleClickBR.style.visibility="initial";
+   rctDoubleClickBR.style.visibility="initial";*/
 }
 
 //INSUFFICIENT LIKES
@@ -737,6 +769,30 @@ function showSettings() {
 	document.getElementById("MenuCellSettings").style.background="#a3a3a3";
 }
 
+function showShopTab() {
+	var UpgradeTab = document.getElementById("UpgradeTab"); 
+	UpgradeTab.style.display="none";
+	UpgradeTab.style.visibility="hidden";
+	document.getElementById("MenuUpgradesTab").style.background="#c1c1c1";
+	
+	var ShopTab = document.getElementById("ShopTab"); 
+	ShopTab.style.display="block"; 
+	ShopTab.style.visibility="visible";
+	document.getElementById("MenuShopTab").style.background="#a3a3a3";
+}
+
+function showUpgradesTab() {
+	var UpgradeTab = document.getElementById("UpgradeTab"); 
+	UpgradeTab.style.display="block";
+	UpgradeTab.style.visibility="visible";
+	document.getElementById("MenuUpgradesTab").style.background="#a3a3a3";
+	
+	var ShopTab = document.getElementById("ShopTab"); 
+	ShopTab.style.display="none"; 
+	ShopTab.style.visibility="hidden";
+	document.getElementById("MenuShopTab").style.background="#c1c1c1";
+}
+
 //DIALOGS
 var dialog = document.querySelector('dialog');
     var showDialogButton = document.querySelector('.showchangelog');
@@ -773,45 +829,78 @@ function hideLikeOverlay() {
 	document.querySelector("#like-icon").style.color = "black";	
 }
 
+document.getElementById("newupgradeicon").style.display = "none";
+document.getElementById("newupgradeicon").style.visibility = "hidden";
+document.getElementById("newupgradeicon2").style.display = "none";
+document.getElementById("newupgradeicon2").style.visibility="hidden";
+
 window.setInterval(function(){
 	if (fans >= 10 && doubleFansPurchased == 0) {
 		recreateDoubleFan();
+		document.getElementById("newupgradeicon").style.display = "initial";
+		document.getElementById("newupgradeicon").style.visibility = "visible";
+		document.getElementById("newupgradeicon2").style.display = "initial";
+		document.getElementById("newupgradeicon2").style.visibility="visible";
 	}
 }, 100);
 
 window.setInterval(function(){
 	if (superfans >= 10 && doubleSuperFansPurchased == 0) {
 		recreateDoubleSuperFan();
+		document.getElementById("newupgradeicon").style.display = "initial";
+		document.getElementById("newupgradeicon").style.visibility = "visible";
+		document.getElementById("newupgradeicon2").style.display = "initial";
+		document.getElementById("newupgradeicon2").style.visibility="visible";
 	}
 }, 100);
 
 window.setInterval(function(){
 	if (megafans >= 10 && doubleMegaFansPurchased == 0) {
 		recreateDoubleMegaFan();
+		document.getElementById("newupgradeicon").style.display = "initial";
+		document.getElementById("newupgradeicon").style.visibility = "visible";
+		document.getElementById("newupgradeicon2").style.display = "initial";
+		document.getElementById("newupgradeicon2").style.visibility="visible";
 	}
 }, 100);
 
 window.setInterval(function(){
 	if (ultrafans >= 10 && doubleUltraFansPurchased == 0) {
 		recreateDoubleUltraFan();
+		document.getElementById("newupgradeicon").style.display = "initial";
+		document.getElementById("newupgradeicon").style.visibility = "visible";
+		document.getElementById("newupgradeicon2").style.display = "initial";
+		document.getElementById("newupgradeicon2").style.visibility="visible";
 	}
 }, 100);
 
 window.setInterval(function(){
 	if (hiperfans >= 10 && doubleHiperFansPurchased == 0) {
 		recreateDoubleHiperFan();
+		document.getElementById("newupgradeicon").style.display = "initial";
+		document.getElementById("newupgradeicon").style.visibility = "visible";
+		document.getElementById("newupgradeicon2").style.display = "initial";
+		document.getElementById("newupgradeicon2").style.visibility="visible";
 	}
 }, 100);
 
 window.setInterval(function(){
 	if (bots >= 10 && doubleBotsPurchased == 0) {
 		recreateDoubleBots();
+		document.getElementById("newupgradeicon").style.display = "initial";
+		document.getElementById("newupgradeicon").style.visibility = "visible";
+		document.getElementById("newupgradeicon2").style.display = "initial";
+		document.getElementById("newupgradeicon2").style.visibility="visible";
 	}
 }, 100);
 
 window.setInterval(function(){
 	if (lpc >= 10 && doubleClickPurchased == 0) {
 		recreateDoubleClick();
+		document.getElementById("newupgradeicon").style.display = "initial";
+		document.getElementById("newupgradeicon").style.visibility = "visible";
+		document.getElementById("newupgradeicon2").style.display = "initial";
+		document.getElementById("newupgradeicon2").style.visibility="visible";
 	}
 }, 100);
 
@@ -880,6 +969,7 @@ function saveGame() {
 	localStorage.setItem("doubleBotsPurchased", JSON.stringify(doubleBotsPurchased));
 	localStorage.setItem("doubleClickPurchased", JSON.stringify(doubleClickPurchased));
 	localStorage.setItem("autoSaveEnabled", JSON.stringify(autoSaveEnabled));
+	localStorage.setItem("darkThemeEnabled", JSON.stringify(darkThemeEnabled));
 	saveGameAlert();
 }
 
@@ -1004,6 +1094,10 @@ function loadGame() {
 	if (JSON.parse(localStorage.getItem("autoSaveEnabled")) == null) {
 		autoSaveEnabled = 1;
 	}
+	darkThemeEnabled = JSON.parse(localStorage.getItem("darkThemeEnabled"));
+	if (JSON.parse(localStorage.getItem("darkThemeEnabled")) == null) {
+		darkThemeEnabled = 0;
+	}
 	
 	updateLikes();
 	updateLPS();
@@ -1087,4 +1181,268 @@ if (lpc == 1) {
 } else if (lpc > 1) {
 	addClickCost = Math.floor(20000 * Math.pow(1.1,lpc));
 	document.getElementById('addClickCost').innerHTML = nf.format(addClickCost);
+}
+
+function enableDisableDarkTheme() {
+	if (darkThemeEnabled == 0) {
+		var darkthemeenabledcheckbox = document.getElementById("darkthemeenabled");
+		darkthemeenabledcheckbox.style.display="block";
+		darkthemeenabledcheckbox.style.visibility="initial";
+	
+		var darkthemedisabledcheckbox = document.getElementById("darkthemedisabled");
+		darkthemedisabledcheckbox.style.display="none";
+		darkthemedisabledcheckbox.style.visibility="hidden";
+		
+		darkThemeEnabled = 1;
+	} else if (darkThemeEnabled == 1) {
+		var darkthemeenabledcheckbox = document.getElementById("darkthemeenabled");
+		darkthemeenabledcheckbox.style.display="none";
+		darkthemeenabledcheckbox.style.visibility="hidden";
+	
+		var darkthemedisabledcheckbox = document.getElementById("darkthemedisabled");
+		darkthemedisabledcheckbox.style.display="block";
+		darkthemedisabledcheckbox.style.visibility="initial";
+		
+		darkThemeEnabled = 0;
+	}
+}
+
+window.setInterval(function(){
+	if (darkThemeEnabled == 0) {
+		disableDarkTheme();
+	} else if (darkThemeEnabled == 1) {
+		enableDarkTheme();
+	}
+}, 100);
+
+function enableDarkTheme() {
+	document.body.style.background = "#333333";
+	document.body.style.color = "white";
+	document.getElementById("TopActionBar").style.borderBottom = "1px solid white";
+	document.getElementById("TopActionBar").style.backgroundColor = "#333333";
+	document.querySelector(".likelabelicon").style.color = "white";
+	document.querySelector(".likeicon").style.color = "white";
+	document.querySelector(".shopitem1").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem1").style.border = "1px solid white";
+	document.querySelector(".shopitem1btn").style.border = "1px solid white";
+	document.querySelector(".shopitem1icon").style.color = "white";
+	document.querySelector(".shopitem2").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem2").style.border = "1px solid white";
+	document.querySelector(".shopitem2btn").style.border = "1px solid white";
+	document.querySelector(".shopitem2icon").style.color = "white";
+	document.querySelector(".shopitem3").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem3").style.border = "1px solid white";
+	document.querySelector(".shopitem3btn").style.border = "1px solid white";
+	document.querySelector(".shopitem3icon").style.color = "white";
+	document.querySelector(".shopitem4").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem4").style.border = "1px solid white";
+	document.querySelector(".shopitem4btn").style.border = "1px solid white";
+	document.querySelector(".shopitem4icon").style.color = "white";
+	document.querySelector(".shopitem5").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem5").style.border = "1px solid white";
+	document.querySelector(".shopitem5btn").style.border = "1px solid white";
+	document.querySelector(".shopitem5icon").style.color = "white";
+	document.querySelector(".shopitem6").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem6").style.border = "1px solid white";
+	document.querySelector(".shopitem6btn").style.border = "1px solid white";
+	document.querySelector(".shopitem6icon").style.color = "white";
+	document.querySelector(".shopitem7").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem7").style.border = "1px solid white";
+	document.querySelector(".shopitem7btn").style.border = "1px solid white";
+	document.querySelector(".shopitem7icon").style.color = "white";
+	document.querySelector(".shopitem8").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem8").style.border = "1px solid white";
+	document.querySelector(".shopitem8btn").style.border = "1px solid white";
+	document.querySelector(".shopitem8icon").style.color = "white";
+	document.querySelector(".shopitem9").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem9").style.border = "1px solid white";
+	document.querySelector(".shopitem9btn").style.border = "1px solid white";
+	document.querySelector(".shopitem9icon").style.color = "white";
+	document.querySelector(".shopitem10").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem10").style.border = "1px solid white";
+	document.querySelector(".shopitem10btn").style.border = "1px solid white";
+	document.querySelector(".shopitem10icon").style.color = "white";
+	document.querySelector(".shopitem11").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem11").style.border = "1px solid white";
+	document.querySelector(".shopitem11btn").style.border = "1px solid white";
+	document.querySelector(".shopitem11icon").style.color = "white";
+	document.querySelector(".shopitem12").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem12").style.border = "1px solid white";
+	document.querySelector(".shopitem12btn").style.border = "1px solid white";
+	document.querySelector(".shopitem12icon").style.color = "white";
+	document.querySelector(".shopitem13").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem13").style.border = "1px solid white";
+	document.querySelector(".shopitem13btn").style.border = "1px solid white";
+	document.querySelector(".shopitem13icon").style.color = "white";
+	document.querySelector(".shopitem14").style.backgroundColor = "#333333";
+	document.querySelector(".shopitem14").style.border = "1px solid white";
+	document.querySelector(".shopitem14btn").style.border = "1px solid white";
+	document.querySelector(".shopitem14icon").style.color = "white";
+	document.querySelector(".commontab").style.borderRight = "1px solid white";
+	document.querySelector(".menuicon1").style.color = "white";
+	document.querySelector(".menuicon2").style.color = "white";
+	document.querySelector(".menuicon3").style.color = "white";
+	document.querySelector(".confighr1").style.border = "1px solid white";
+	document.querySelector(".confighr2").style.border = "1px solid white";
+	document.querySelector(".confighr3").style.border = "1px solid white";
+	document.querySelector(".confighr4").style.border = "1px solid white";
+	document.querySelector(".confighr5").style.border = "1px solid white";
+	document.querySelector(".configoption1").style.border = "1px solid white";
+	document.querySelector(".configoption1").style.color = "white";
+	document.querySelector(".option1icon").style.color = "white";
+	document.querySelector(".configoption2").style.border = "1px solid white";
+	document.querySelector(".configoption2").style.color = "white";
+	document.querySelector(".option2icon").style.color = "white";
+	document.querySelector(".configoption3").style.border = "1px solid white";
+	document.querySelector(".configoption3").style.color = "white";
+	document.querySelector(".option3icon").style.color = "white";
+	document.querySelector(".configoption4").style.border = "1px solid white";
+	document.querySelector(".configoption4").style.color = "white";
+	document.querySelector(".option4icon").style.color = "white";
+	document.querySelector(".configoption5").style.border = "1px solid white";
+	document.querySelector(".configoption5").style.color = "white";
+	document.querySelector(".option5icon").style.color = "white";
+	document.querySelector(".configoption6").style.border = "1px solid white";
+	document.querySelector(".configoption6").style.color = "white";
+	document.querySelector(".option6icon").style.color = "white";
+	document.querySelector(".configoption7").style.border = "1px solid white";
+	document.querySelector(".configoption7").style.color = "white";
+	document.querySelector(".option7icon").style.color = "white";
+	document.querySelector(".configoption8").style.border = "1px solid white";
+	document.querySelector(".configoption8").style.color = "white";
+	document.querySelector(".option8icon").style.color = "white";
+	document.querySelector(".configoption9").style.border = "1px solid white";
+	document.querySelector(".configoption9").style.color = "white";
+	document.querySelector(".option9icon").style.color = "white";
+	document.querySelector(".configoption10").style.border = "1px solid white";
+	document.querySelector(".configoption10").style.color = "white";
+	document.querySelector(".option10icon").style.color = "white";
+	document.querySelector(".configoption11").style.border = "1px solid white";
+	document.querySelector(".configoption11").style.color = "white";
+	document.querySelector(".option11icon").style.color = "white";
+	document.querySelector(".configoption12").style.border = "1px solid white";
+	document.querySelector(".configoption12").style.color = "white";
+	document.querySelector(".option12icon").style.color = "white";
+	document.querySelector(".configoption13").style.border = "1px solid white";
+	document.querySelector(".configoption13").style.color = "white";
+	document.querySelector(".option13icon").style.color = "white";
+	document.querySelector(".configoption14").style.border = "1px solid white";
+	document.querySelector(".configoption14").style.color = "white";
+	document.querySelector(".option14icon").style.color = "white";
+}
+
+function disableDarkTheme() {
+	document.body.style.background = "white";
+	document.body.style.color = "black";
+	document.getElementById("TopActionBar").style.borderBottom = "1px solid black";
+	document.getElementById("TopActionBar").style.backgroundColor = "white";
+	document.querySelector(".likelabelicon").style.color = "black";
+	document.querySelector(".likeicon").style.color = "black";
+	document.querySelector(".shopitem1").style.backgroundColor = "white";
+	document.querySelector(".shopitem1").style.border = "1px solid black";
+	document.querySelector(".shopitem1btn").style.border = "1px solid black";
+	document.querySelector(".shopitem1icon").style.color = "black";
+	document.querySelector(".shopitem2").style.backgroundColor = "white";
+	document.querySelector(".shopitem2").style.border = "1px solid black";
+	document.querySelector(".shopitem2btn").style.border = "1px solid black";
+	document.querySelector(".shopitem2icon").style.color = "black";
+	document.querySelector(".shopitem3").style.backgroundColor = "white";
+	document.querySelector(".shopitem3").style.border = "1px solid black";
+	document.querySelector(".shopitem3btn").style.border = "1px solid black";
+	document.querySelector(".shopitem3icon").style.color = "black";
+	document.querySelector(".shopitem4").style.backgroundColor = "white";
+	document.querySelector(".shopitem4").style.border = "1px solid black";
+	document.querySelector(".shopitem4btn").style.border = "1px solid black";
+	document.querySelector(".shopitem4icon").style.color = "black";
+	document.querySelector(".shopitem5").style.backgroundColor = "white";
+	document.querySelector(".shopitem5").style.border = "1px solid black";
+	document.querySelector(".shopitem5btn").style.border = "1px solid black";
+	document.querySelector(".shopitem5icon").style.color = "black";
+	document.querySelector(".shopitem6").style.backgroundColor = "white";
+	document.querySelector(".shopitem6").style.border = "1px solid black";
+	document.querySelector(".shopitem6btn").style.border = "1px solid black";
+	document.querySelector(".shopitem6icon").style.color = "black";
+	document.querySelector(".shopitem7").style.backgroundColor = "white";
+	document.querySelector(".shopitem7").style.border = "1px solid black";
+	document.querySelector(".shopitem7btn").style.border = "1px solid black";
+	document.querySelector(".shopitem7icon").style.color = "black";
+	document.querySelector(".shopitem8").style.backgroundColor = "white";
+	document.querySelector(".shopitem8").style.border = "1px solid black";
+	document.querySelector(".shopitem8btn").style.border = "1px solid black";
+	document.querySelector(".shopitem8icon").style.color = "black";
+	document.querySelector(".shopitem9").style.backgroundColor = "white";
+	document.querySelector(".shopitem9").style.border = "1px solid black";
+	document.querySelector(".shopitem9btn").style.border = "1px solid black";
+	document.querySelector(".shopitem9icon").style.color = "black";
+	document.querySelector(".shopitem10").style.backgroundColor = "white";
+	document.querySelector(".shopitem10").style.border = "1px solid black";
+	document.querySelector(".shopitem10btn").style.border = "1px solid black";
+	document.querySelector(".shopitem10icon").style.color = "black";
+	document.querySelector(".shopitem11").style.backgroundColor = "white";
+	document.querySelector(".shopitem11").style.border = "1px solid black";
+	document.querySelector(".shopitem11btn").style.border = "1px solid black";
+	document.querySelector(".shopitem11icon").style.color = "black";
+	document.querySelector(".shopitem12").style.backgroundColor = "white";
+	document.querySelector(".shopitem12").style.border = "1px solid black";
+	document.querySelector(".shopitem12btn").style.border = "1px solid black";
+	document.querySelector(".shopitem12icon").style.color = "black";
+	document.querySelector(".shopitem13").style.backgroundColor = "white";
+	document.querySelector(".shopitem13").style.border = "1px solid black";
+	document.querySelector(".shopitem13btn").style.border = "1px solid black";
+	document.querySelector(".shopitem13icon").style.color = "black";
+	document.querySelector(".shopitem14").style.backgroundColor = "white";
+	document.querySelector(".shopitem14").style.border = "1px solid black";
+	document.querySelector(".shopitem14btn").style.border = "1px solid black";
+	document.querySelector(".shopitem14icon").style.color = "black";
+	document.querySelector(".commontab").style.borderRight = "1px solid black";
+	document.querySelector(".menuicon1").style.color = "black";
+	document.querySelector(".menuicon2").style.color = "black";
+	document.querySelector(".menuicon3").style.color = "black";
+	document.querySelector(".confighr1").style.border = "1px solid black";
+	document.querySelector(".confighr2").style.border = "1px solid black";
+	document.querySelector(".confighr3").style.border = "1px solid black";
+	document.querySelector(".confighr4").style.border = "1px solid black";
+	document.querySelector(".confighr5").style.border = "1px solid black";
+	document.querySelector(".configoption1").style.border = "1px solid black";
+	document.querySelector(".configoption1").style.color = "black";
+	document.querySelector(".option1icon").style.color = "black";
+	document.querySelector(".configoption2").style.border = "1px solid black";
+	document.querySelector(".configoption2").style.color = "black";
+	document.querySelector(".option2icon").style.color = "black";
+	document.querySelector(".configoption3").style.border = "1px solid black";
+	document.querySelector(".configoption3").style.color = "black";
+	document.querySelector(".option3icon").style.color = "black";
+	document.querySelector(".configoption4").style.border = "1px solid black";
+	document.querySelector(".configoption4").style.color = "black";
+	document.querySelector(".option4icon").style.color = "black";
+	document.querySelector(".configoption5").style.border = "1px solid black";
+	document.querySelector(".configoption5").style.color = "black";
+	document.querySelector(".option5icon").style.color = "black";
+	document.querySelector(".configoption6").style.border = "1px solid black";
+	document.querySelector(".configoption6").style.color = "black";
+	document.querySelector(".option6icon").style.color = "black";
+	document.querySelector(".configoption7").style.border = "1px solid black";
+	document.querySelector(".configoption7").style.color = "black";
+	document.querySelector(".option7icon").style.color = "black";
+	document.querySelector(".configoption8").style.border = "1px solid black";
+	document.querySelector(".configoption8").style.color = "black";
+	document.querySelector(".option8icon").style.color = "black";
+	document.querySelector(".configoption9").style.border = "1px solid black";
+	document.querySelector(".configoption9").style.color = "black";
+	document.querySelector(".option9icon").style.color = "black";
+	document.querySelector(".configoption10").style.border = "1px solid black";
+	document.querySelector(".configoption10").style.color = "black";
+	document.querySelector(".option10icon").style.color = "black";
+	document.querySelector(".configoption11").style.border = "1px solid black";
+	document.querySelector(".configoption11").style.color = "black";
+	document.querySelector(".option11icon").style.color = "black";
+	document.querySelector(".configoption12").style.border = "1px solid black";
+	document.querySelector(".configoption12").style.color = "black";
+	document.querySelector(".option12icon").style.color = "black";
+	document.querySelector(".configoption13").style.border = "1px solid black";
+	document.querySelector(".configoption13").style.color = "black";
+	document.querySelector(".option13icon").style.color = "black";
+	document.querySelector(".configoption14").style.border = "1px solid black";
+	document.querySelector(".configoption14").style.color = "black";
+	document.querySelector(".option14icon").style.color = "black";
 }
