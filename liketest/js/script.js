@@ -1216,6 +1216,12 @@ window.setInterval(function(){
 }, 100);
 
 function enableDarkTheme() {
+	var darkthemeenabledcheckbox = document.getElementById("darkthemeenabled");
+	darkthemeenabledcheckbox.style.display="block";
+	darkthemeenabledcheckbox.style.visibility="initial";
+	var darkthemedisabledcheckbox = document.getElementById("darkthemedisabled");
+	darkthemedisabledcheckbox.style.display="none";
+	darkthemedisabledcheckbox.style.visibility="hidden";
 	document.body.style.background = "#333333";
 	document.body.style.color = "white";
 	document.getElementById("TopActionBar").style.borderBottom = "1px solid white";
@@ -1332,6 +1338,12 @@ function enableDarkTheme() {
 }
 
 function disableDarkTheme() {
+	var darkthemeenabledcheckbox = document.getElementById("darkthemeenabled");
+	darkthemeenabledcheckbox.style.display="none";
+	darkthemeenabledcheckbox.style.visibility="hidden";
+	var darkthemedisabledcheckbox = document.getElementById("darkthemedisabled");
+	darkthemedisabledcheckbox.style.display="block";
+	darkthemedisabledcheckbox.style.visibility="initial";
 	document.body.style.background = "white";
 	document.body.style.color = "black";
 	document.getElementById("TopActionBar").style.borderBottom = "1px solid black";
