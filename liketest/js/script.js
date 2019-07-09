@@ -23,6 +23,7 @@ var doubleBotsPurchased = 0;
 var doubleClickPurchased = 0;
 var autoSaveEnabled = 1;
 var darkThemeEnabled = 0;
+var musicsEnabled = 1;
 var addClickCost;
 var fanCost = 10;
 var superFanCost = 100;
@@ -55,6 +56,14 @@ document.getElementById('lpc').innerHTML = "LPC: " + nf.format(lpc);
 document.getElementById('addClickCost').innerHTML = nf.format(addClickCost);
 document.getElementById('doubleClickCost').innerHTML = nf.format(doubleClickCost);
 
+function manualDarkTheme() {
+	if (darkThemeEnabled == 0) {
+		disableDarkTheme();
+	} else if (darkThemeEnabled == 1) {
+		enableDarkTheme();
+	}
+}
+
 //BUG CORRECTION OF THE ENTER KEY
 window.addEventListener("keydown", keyDown);
 
@@ -82,6 +91,24 @@ if (autoSaveEnabled == 0) {
 	var savedisabledcheckbox = document.getElementById("savedisabled");
 	savedisabledcheckbox.style.display="none";
 	savedisabledcheckbox.style.visibility="hidden";
+}
+
+if (musicsEnabled == 0) {
+	var musicsenabledcheckbox = document.getElementById("musicsenabled");
+	musicsenabledcheckbox.style.display="none";
+	musicsenabledcheckbox.style.visibility="hidden";
+	
+	var musicsdisabledcheckbox = document.getElementById("musicsdisabled");
+	musicsdisabledcheckbox.style.display="block";
+	musicsdisabledcheckbox.style.visibility="initial";
+} else if (musicsEnabled == 1) {
+	var musicsenabledcheckbox = document.getElementById("musicsenabled");
+	musicsenabledcheckbox.style.display="block";
+	musicsenabledcheckbox.style.visibility="initial";
+	
+	var musicsdisabledcheckbox = document.getElementById("musicsdisabled");
+	musicsdisabledcheckbox.style.display="none";
+	musicsdisabledcheckbox.style.visibility="hidden";
 }
 
 //REMOVE X2 UPGRADES
@@ -186,6 +213,7 @@ function resetGame(){
 	doubleClickPurchased = 0;
 	autoSaveEnabled = 1;
 	darkThemeEnabled = 0;
+	musicsEnabled = 1;
 	localStorage.clear();
 };
 
@@ -812,7 +840,7 @@ var dialog = document.querySelector('dialog');
       dialogPolyfill.registerDialog(dialogReset);
     }
     showDialogResetButton.addEventListener('click', function() {
-      dialogReset.showModal();
+		dialogReset.showModal();
     });
     dialogReset.querySelector('.closedialog').addEventListener('click', function() {
       dialogReset.close();
@@ -820,6 +848,23 @@ var dialog = document.querySelector('dialog');
 	dialogReset.querySelector('.resetgame').addEventListener('click', function() {
       dialogReset.close();
     });
+	
+var dialogCredits = document.querySelector('#creditsDialog');
+var showDialogCreditsButton = document.querySelector('.showcredits');
+if (! dialogCredits.showModal) {
+	dialogPolyfill.registerDialog(dialogCredits);
+}
+showDialogCreditsButton.addEventListener('click', function() {
+	document.getElementById('creditsiframe').src = document.getElementById('creditsiframe').src;
+	dialogCredits.showModal();
+});
+dialogCredits.querySelector('.closecredits').addEventListener('click', function() {
+	dialogCredits.close();
+});
+
+/*function creditsReset() {
+	document.getElementById('creditsDialog').src = document.getElementById('creditsDialog').src;
+}*/
 
 function showLikeOverlay() {
 	document.querySelector("#like-icon").style.color = "#595959";
@@ -970,6 +1015,7 @@ function saveGame() {
 	localStorage.setItem("doubleClickPurchased", JSON.stringify(doubleClickPurchased));
 	localStorage.setItem("autoSaveEnabled", JSON.stringify(autoSaveEnabled));
 	localStorage.setItem("darkThemeEnabled", JSON.stringify(darkThemeEnabled));
+	localStorage.setItem("musicsEnabled", JSON.stringify(musicsEnabled));
 	saveGameAlert();
 }
 
@@ -1097,6 +1143,10 @@ function loadGame() {
 	darkThemeEnabled = JSON.parse(localStorage.getItem("darkThemeEnabled"));
 	if (JSON.parse(localStorage.getItem("darkThemeEnabled")) == null) {
 		darkThemeEnabled = 0;
+	}
+	musicsEnabled = JSON.parse(localStorage.getItem("musicsEnabled"));
+	if (JSON.parse(localStorage.getItem("musicsEnabled")) == null) {
+		musicsEnabled = 1;
 	}
 	
 	updateLikes();
@@ -1293,6 +1343,7 @@ function enableDarkTheme() {
 	document.querySelector(".confighr3").style.border = "1px solid white";
 	document.querySelector(".confighr4").style.border = "1px solid white";
 	document.querySelector(".confighr5").style.border = "1px solid white";
+	document.querySelector(".confighr6").style.border = "1px solid white";
 	document.querySelector(".configoption1").style.border = "1px solid white";
 	document.querySelector(".configoption1").style.color = "white";
 	document.querySelector(".option1icon").style.color = "white";
@@ -1335,6 +1386,14 @@ function enableDarkTheme() {
 	document.querySelector(".configoption14").style.border = "1px solid white";
 	document.querySelector(".configoption14").style.color = "white";
 	document.querySelector(".option14icon").style.color = "white";
+	document.querySelector(".configoption15").style.border = "1px solid white";
+	document.querySelector(".configoption15").style.color = "white";
+	document.querySelector(".option15icon").style.color = "white";
+	
+	if (musicsEnabled == 1) {
+		document.querySelector('#HouseInAForestLoop').pause();
+		document.querySelector('#NoMoreMagic').play();
+	}
 }
 
 function disableDarkTheme() {
@@ -1415,6 +1474,7 @@ function disableDarkTheme() {
 	document.querySelector(".confighr3").style.border = "1px solid black";
 	document.querySelector(".confighr4").style.border = "1px solid black";
 	document.querySelector(".confighr5").style.border = "1px solid black";
+	document.querySelector(".confighr6").style.border = "1px solid black";
 	document.querySelector(".configoption1").style.border = "1px solid black";
 	document.querySelector(".configoption1").style.color = "black";
 	document.querySelector(".option1icon").style.color = "black";
@@ -1457,4 +1517,72 @@ function disableDarkTheme() {
 	document.querySelector(".configoption14").style.border = "1px solid black";
 	document.querySelector(".configoption14").style.color = "black";
 	document.querySelector(".option14icon").style.color = "black";
+	document.querySelector(".configoption15").style.border = "1px solid black";
+	document.querySelector(".configoption15").style.color = "black";
+	document.querySelector(".option15icon").style.color = "black";
+	
+	if (musicsEnabled == 1) {
+		document.querySelector('#NoMoreMagic').pause();
+		document.querySelector('#HouseInAForestLoop').play();
+	}
 }
+
+function enableDisableMusics() {
+	if (musicsEnabled == 0) {
+		var musicsenabledcheckbox = document.getElementById("musicsenabled");
+		musicsenabledcheckbox.style.display="block";
+		musicsenabledcheckbox.style.visibility="initial";
+	
+		var musicsdisabledcheckbox = document.getElementById("musicsdisabled");
+		musicsdisabledcheckbox.style.display="none";
+		musicsdisabledcheckbox.style.visibility="hidden";
+		
+		musicsEnabled = 1;
+		manualDarkTheme();
+	} else if (musicsEnabled == 1) {
+		var musicsenabledcheckbox = document.getElementById("musicsenabled");
+		musicsenabledcheckbox.style.display="none";
+		musicsenabledcheckbox.style.visibility="hidden";
+	
+		var musicsdisabledcheckbox = document.getElementById("musicsdisabled");
+		musicsdisabledcheckbox.style.display="block";
+		musicsdisabledcheckbox.style.visibility="initial";
+		
+		musicsEnabled = 0;
+		stopMusic();
+	}
+}
+
+if (JSON.parse(localStorage.getItem("musicsEnabled")) == 0) {
+	var musicsenabledcheckbox = document.getElementById("musicsenabled");
+	musicsenabledcheckbox.style.display="none";
+	musicsenabledcheckbox.style.visibility="hidden";
+	
+	var musicsdisabledcheckbox = document.getElementById("musicsdisabled");
+	musicsdisabledcheckbox.style.display="block";
+	musicsdisabledcheckbox.style.visibility="initial";
+	
+	stopMusic();
+	} else if (JSON.parse(localStorage.getItem("musicsEnabled")) == 1) {
+	var musicsenabledcheckbox = document.getElementById("musicsenabled");
+	musicsenabledcheckbox.style.display="block";
+	musicsenabledcheckbox.style.visibility="initial";
+	
+	var musicsdisabledcheckbox = document.getElementById("musicsdisabled");
+	musicsdisabledcheckbox.style.display="none";
+	musicsdisabledcheckbox.style.visibility="hidden";
+	
+	stopMusic();
+	manualDarkTheme();
+}
+
+function stopMusic() {
+	document.querySelector('#HouseInAForestLoop').pause();
+	document.querySelector('#NoMoreMagic').pause();
+}
+
+window.setInterval(function(){
+	if (musicsEnabled == 0) {
+		stopMusic();
+	}
+}, 100);

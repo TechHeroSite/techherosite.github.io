@@ -54,6 +54,8 @@
 					<span id="likestxt">You have 0 likes</span><br>
 					<span id="lps" data-toggle="tooltip" title="Number of Likes per Second">LPS: 0</span><br>
 					<span id="lpc" data-toggle="tooltip" title="Number of Likes per Click">LPC: 1</span><br>
+					<audio loop id="HouseInAForestLoop" src="music/HouseInAForestLoop.mp3"></audio>
+					<audio loop id="NoMoreMagic" src="music/NoMoreMagic.mp3"></audio>
 					<ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4528874180134576"
@@ -423,17 +425,6 @@
 				<center><h4>Config.</h4></center>
 				<div id="CategoryDiv">
 					<div>
-						<b id="Category">Dark Theme</b>
-						<hr class="confighr1" style="border: 1px solid black;">
-						<div class="configoption1" id="SettingsOption" onclick="enableDisableDarkTheme()">
-							<i class="fontelloicons icon-brush option1icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
-							<span class="darktheme" title="Enable/Disable dark theme">Dark theme</span>
-							<i id="darkthemedisabled" style="float: right; padding-right: 5px;" class="material-icons">check_box_outline_blank</i>
-							<i id="darkthemeenabled" style="float: right; padding-right: 5px; display: none; visibility: hidden;" class="material-icons">check_box</i>
-						</div>
-					</div>
-					<br>
-					<div>
 						<b id="Category">Save and Load</b>
 						<hr class="confighr2" style="border: 1px solid black;">
 						<div class="configoption2" id="SettingsOption" title="Save the game" onclick="saveGame()">
@@ -453,6 +444,17 @@
 					</div>
 					<br>
 					<div>
+						<b id="Category">Dark Theme</b>
+						<hr class="confighr1" style="border: 1px solid black;">
+						<div class="configoption1" id="SettingsOption" onclick="enableDisableDarkTheme()">
+							<i class="fontelloicons icon-brush option1icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+							<span class="darktheme" title="Enable/Disable dark theme">Dark theme</span>
+							<i id="darkthemedisabled" style="float: right; padding-right: 5px;" class="material-icons">check_box_outline_blank</i>
+							<i id="darkthemeenabled" style="float: right; padding-right: 5px; display: none; visibility: hidden;" class="material-icons">check_box</i>
+						</div>
+					</div>
+					<br>
+					<div>
 						<b id="Category">Reset</b>
 						<hr class="confighr3" style="border: 1px solid black;">
 						<div class="reset configoption5" id="SettingsOption" title="Reset the game">
@@ -460,38 +462,53 @@
 							<span>Erase data</span>
 						</div>
 					</div>
+					<br>
+					<div>
+						<b id="Category">Musics</b>
+						<hr class="confighr4" style="border: 1px solid black;">
+						<div class="configoption6" id="SettingsOption" onclick="enableDisableMusics()">
+							<i class="fontelloicons icon-musics option6icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+							<span class="musics" title="Enable/Disable musics">Musics</span>
+							<i id="musicsdisabled" style="float: right; padding-right: 5px; display: none; visibility: hidden;" class="material-icons">check_box_outline_blank</i>
+							<i id="musicsenabled" style="float: right; padding-right: 5px;" class="material-icons">check_box</i>
+						</div>
+					</div>
 				</div>
 				<br>
 				<div id="CategoryDiv">
 					<div>
 						<b id="Category">About</b>
-						<hr class="confighr4" style="border: 1px solid black;">
-						<div class="configoption6" id="SettingsOption" title="Version: 1.3.0" onclick="unknfunc()">
-							<i class="fontelloicons icon-info-circled option6icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+						<hr class="confighr5" style="border: 1px solid black;">
+						<div class="configoption7" id="SettingsOption" title="Version: 1.3.0" onclick="unknfunc()">
+							<i class="fontelloicons icon-info-circled option7icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
 							<span>Version: 1.3.0</span>
 						</div>
-						<div class="configoption7" id="SettingsOption" title="Developed by: TechHero">
-							<i class="fontelloicons icon-code option7icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
-							<span>Developed by: TechHero</span>
-						</div>
-						<div class="showchangelog configoption8" id="SettingsOption" title="Open the changelog">
+						<div class="showcredits configoption8" id="SettingsOption" title="Credits of the game">
 							<i class="fontelloicons icon-changelog option8icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+							<span>Credits</span>
+						</div>
+						<!--<div class="configoption8" id="SettingsOption" title="Developed by: TechHero">
+							<i class="fontelloicons icon-code option8icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+							<span>Developed by: TechHero</span>
+						</div>-->
+						<div class="showchangelog configoption9" id="SettingsOption" title="Open the changelog">
+							<i class="fontelloicons icon-changelog option9icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
 							<span>Open changelog</span>
 						</div>
-						<div class="configoption9" id="SettingsOption" href="https://likeclicker.reddit.com" target="_blank" title="Subreddit of the game">
-							<i class="fontelloicons icon-reddit option9icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
+						<div class="configoption10" id="SettingsOption" href="https://likeclicker.reddit.com" target="_blank" title="Subreddit of the game">
+							<i class="fontelloicons icon-reddit option10icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
 							<a>Reddit</a>
 						</div>
-						<div class="configoption10" id="SettingsOption" href="https://github.com/TechnoHerobrine/Like-Clicker" target="_blank" title="GitHub Repository of the game">
-							<i class="fontelloicons icon-github option10icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
+						<div class="configoption11" id="SettingsOption" href="https://github.com/TechnoHerobrine/Like-Clicker" target="_blank" title="GitHub Repository of the game">
+							<i class="fontelloicons icon-github option11icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
 							<a>GitHub</a>
 						</div>
-						<div class="configoption11" id="SettingsOption" href="https://twitter.com/intent/follow?ref_src=twsrc%5Etfw&region=follow_link&screen_name=LikeClicker&tw_p=followbutton" target="_blank" title="Follow Like Clicker on Twitter">
-							<i class="fontelloicons icon-twitter option11icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
+						<div class="configoption12" id="SettingsOption" href="https://twitter.com/intent/follow?ref_src=twsrc%5Etfw&region=follow_link&screen_name=LikeClicker&tw_p=followbutton" target="_blank" title="Follow Like Clicker on Twitter">
+							<i class="fontelloicons icon-twitter option12icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
 							<a>Follow Like Clicker on Twitter</a>
 						</div>
-						<div class="configoption12" id="SettingsOption" href="https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&text=Hey%2C%20I%27m%20playing%20Like%20Clicker!%20Play%20you%20too.%0D%0A&tw_p=tweetbutton&via=LikeClicker" target="_blank" title="Share on Twitter">
-							<i class="fontelloicons icon-twitter option12icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
+						<div class="configoption13" id="SettingsOption" href="https://twitter.com/intent/tweet?ref_src=twsrc%5Etfw&text=Hey%2C%20I%27m%20playing%20Like%20Clicker!%20Play%20you%20too.%0D%0A&tw_p=tweetbutton&via=LikeClicker" target="_blank" title="Share on Twitter">
+							<i class="fontelloicons icon-twitter option13icon" style="color: black; display: inline-flex; vertical-align: middle; font-size: 20px; line-height: 1;"></i>
 							<a>Share on Twitter</a>
 						</div>
 						<!--<a id="SettingsOption" href="likeclicker.apk" target="_blank" title="Get Like Clicker for Android" download>Get Like Clicker for Android</a>-->
@@ -500,13 +517,13 @@
 				<br>
 				<div id="CategoryDiv">
 					<b id="Category">More games</b>
-					<hr class="confighr5" style="border: 1px solid black;">
-					<a class="configoption13" id="SettingsOption" href="https://technoherobrine.github.io/hillclimbhcr2mod/download/" target="_blank" title="Hill Climb HCR2 Mod">
-						<i class="fontelloicons icon-android option13icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+					<hr class="confighr6" style="border: 1px solid black;">
+					<a class="configoption14" id="SettingsOption" href="https://technoherobrine.github.io/hillclimbhcr2mod/download/" target="_blank" title="Hill Climb HCR2 Mod">
+						<i class="fontelloicons icon-android option14icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
 						<span>Hill Climb HCR2 Mod</span>
 					</a>
-					<a class="configoption14" id="SettingsOption" href="https://gamejolt.com/games/helpysadventure/368451" target="_blank" title="Helpy's Adventure">
-						<i class="fontelloicons icon-desktop option14icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
+					<a class="configoption15" id="SettingsOption" href="https://gamejolt.com/games/helpysadventure/368451" target="_blank" title="Helpy's Adventure">
+						<i class="fontelloicons icon-desktop option15icon" style="color: black; display: inline-flex; font-size: 20px; line-height: 1;"></i>
 						<span>Helpy's Adventure</span>
 					</a>
 				</div>
@@ -574,6 +591,17 @@
 		</button>
     </div>
   </dialog>
+	<dialog id="creditsDialog" style="width: 80%; background-color: #333333;">
+		<h4 class="dialog__title" style="color: white;">Credits</h4>
+		<div class="dialog__content">
+			<iframe id="creditsiframe" src="assets/credits.html" height="300" width="100%" scrolling="no" style="border: none;"></iframe>
+		</div>
+		<div class="dialog__actions">
+			<button style="color: white;" type="button" class="close closecredits" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+	</dialog>
 		<script src="js/dialog-polyfill.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
 	</body>

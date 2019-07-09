@@ -111,6 +111,10 @@
     content: '\f1fc';
 }
 
+.fontelloicons.icon-musics:before {
+    content: '\e801';
+}
+
 input {
     font-size: 100%;
 }
