@@ -1,60 +1,60 @@
 //VARIABLES
 var likes = 0;
 var followers = 0;
-var superfans = 0;
-var megafans = 0;
-var ultrafans = 0;
-var hiperfans = 0;
+var fans = 0;
+var paparazzis = 0;
+var stalkers = 0;
+var lunatics = 0;
 var bots = 0;
 var lpc = 1;
 var lps = 0;
 var followerLPS = 1;
-var superFanLPS = 2;
-var megaFanLPS = 4;
-var ultraFanLPS = 8;
-var hiperFanLPS = 16;
+var FansLPS = 2;
+var paparazzisLPS = 4;
+var stalkersLPS = 8;
+var lunaticsLPS = 16;
 var botLPS = 32;
 var hypeFollowersPurchased = 0;
-var doubleSuperFansPurchased = 0;
-var doubleMegaFansPurchased = 0;
-var doubleUltraFansPurchased = 0;
-var doubleHiperFansPurchased = 0;
+var hypeFansPurchased = 0;
+var hypePaparazzisPurchased = 0;
+var hypeStalkersPurchased = 0;
+var hypeLunaticsPurchased = 0;
 var doubleBotsPurchased = 0;
-var doubleClickPurchased = 0;
+/*var doubleClickPurchased = 0;*/
 var autoSaveEnabled = 1;
 var darkThemeEnabled = 0;
 var musicsEnabled = 1;
-var addClickCost;
 var followerCost = 10;
-var superFanCost = 100;
-var megaFanCost = 500;
-var ultraFanCost = 1000;
-var hiperFanCost = 5000;
+var hypeFansCost = 100;
+var paparazzisCost = 500;
+var stalkersCost = 1000;
+var lunaticsCost = 5000;
 var botCost = 10000;
 var nf = new Intl.NumberFormat(undefined, {style:'decimal'});
+var addClickCost;
 
 document.getElementById('botLPS').innerHTML = botLPS;
 document.getElementById('followers').innerHTML = nf.format(followers);
 document.getElementById('followerCost').innerHTML = nf.format(followerCost);
 document.getElementById('hypeFollowersCost').innerHTML = nf.format(hypeFollowersCost);
-document.getElementById('superfans').innerHTML = nf.format(superfans);
-document.getElementById('superFanCost').innerHTML = nf.format(superFanCost);
-document.getElementById('doubleSuperFanCost').innerHTML = nf.format(doubleSuperFanCost);
-document.getElementById('megafans').innerHTML = nf.format(megafans);
-document.getElementById('megaFanCost').innerHTML = nf.format(megaFanCost);
-document.getElementById('doubleMegaFanCost').innerHTML = nf.format(doubleMegaFanCost);
-document.getElementById('ultrafans').innerHTML = nf.format(ultrafans);
-document.getElementById('ultraFanCost').innerHTML = nf.format(ultraFanCost);
-document.getElementById('doubleUltraFanCost').innerHTML = nf.format(doubleUltraFanCost);
-document.getElementById('hiperfans').innerHTML = nf.format(hiperfans);
-document.getElementById('hiperFanCost').innerHTML = nf.format(hiperFanCost);
-document.getElementById('doubleHiperFanCost').innerHTML = nf.format(doubleHiperFanCost);
+document.getElementById('fans').innerHTML = nf.format(fans);
+document.getElementById('FansCost').innerHTML = nf.format(FansCost);
+document.getElementById('hypeFansCost').innerHTML = nf.format(hypeFansCost);
+document.getElementById('paparazzis').innerHTML = nf.format(paparazzis);
+document.getElementById('paparazzisCost').innerHTML = nf.format(paparazzisCost);
+document.getElementById('hypePaparazzisCost').innerHTML = nf.format(hypePaparazzisCost);
+document.getElementById('stalkers').innerHTML = nf.format(stalkers);
+document.getElementById('stalkersCost').innerHTML = nf.format(stalkersCost);
+document.getElementById('hypeStalkersCost').innerHTML = nf.format(hypeStalkersCost);
+document.getElementById('lunatics').innerHTML = nf.format(lunatics);
+document.getElementById('lunaticsCost').innerHTML = nf.format(lunaticsCost);
+document.getElementById('hypeLunaticsCost').innerHTML = nf.format(hypeLunaticsCost);
 document.getElementById('bots').innerHTML = nf.format(bots);
 document.getElementById('botCost').innerHTML = nf.format(botCost);
 document.getElementById('doubleBotsCost').innerHTML = nf.format(doubleBotsCost);
 document.getElementById('lpc').innerHTML = "LPC: " + nf.format(lpc);
-document.getElementById('addClickCost').innerHTML = nf.format(addClickCost);
-document.getElementById('doubleClickCost').innerHTML = nf.format(doubleClickCost);
+document.getElementById('addClickCost').innerHTML = nextCostAddClick;
+/*document.getElementById('doubleClickCost').innerHTML = nf.format(doubleClickCost);*/
 
 function manualDarkTheme() {
 	if (darkThemeEnabled == 0) {
@@ -113,107 +113,116 @@ if (musicsEnabled == 0) {
 
 //REMOVE X2 UPGRADES
 removeHypeFollowers();
-removeDoubleSuperFan();
-removeDoubleMegaFan();
-removeDoubleUltraFan();
-removeDoubleHiperFan();
+removeHypeFans();
+removeHypePaparazzis();
+removeHypeStalkers();
+removeHypeLunatics();
 removeDoubleBots();
-removeDoubleClick();
+/*removeDoubleClick();*/
 
 //INITIAL COST OF ITEMS
 var hypeFollowersCost = 500;
 	document.getElementById('hypeFollowersCost').innerHTML = nf.format(hypeFollowersCost);
-var doubleSuperFanCost = 1000;
-	document.getElementById('doubleSuperFanCost').innerHTML = nf.format(doubleSuperFanCost);
-var doubleMegaFanCost = 6000;
-	document.getElementById('doubleMegaFanCost').innerHTML = nf.format(doubleMegaFanCost);
-var doubleUltraFanCost = 12000;
-	document.getElementById('doubleUltraFanCost').innerHTML = nf.format(doubleUltraFanCost);
-var doubleHiperFanCost = 25000;
-	document.getElementById('doubleHiperFanCost').innerHTML = nf.format(doubleHiperFanCost);
+var HypeFansCost = 1000;
+	document.getElementById('hypeFansCost').innerHTML = nf.format(hypeFansCost);
+var hypePaparazzisCost = 6000;
+	document.getElementById('hypePaparazzisCost').innerHTML = nf.format(hypePaparazzisCost);
+var hypeStalkersCost = 12000;
+	document.getElementById('hypeStalkersCost').innerHTML = nf.format(hypeStalkersCost);
+var hypeLunaticsCost = 25000;
+	document.getElementById('hypeLunaticsCost').innerHTML = nf.format(hypeLunaticsCost);
 var doubleBotsCost = 50000;
 	document.getElementById('doubleBotsCost').innerHTML = nf.format(doubleBotsCost);
-var doubleClickCost = 45000;
-	document.getElementById('doubleClickCost').innerHTML = nf.format(doubleClickCost);
+var addClickCost = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
+/*var doubleClickCost = 45000;
+	document.getElementById('doubleClickCost').innerHTML = nf.format(doubleClickCost);*/
 
 //RESET THE GAME
 function resetGame(){
 	removeHypeFollowers();
-	removeDoubleSuperFan();
-	removeDoubleMegaFan();
-	removeDoubleUltraFan();
-	removeDoubleHiperFan();
+	removeHypeFans();
+	removeHypePaparazzis();
+	removeHypeStalkers();
+	removeHypeLunatics();
 	removeDoubleBots();
-	removeDoubleClick();
+	/*removeDoubleClick();*/
     likes = 0;
 	lps = 0;
 	followers = 0;
-	superfans = 0;
-	megafans = 0;
-	ultrafans = 0;
-	hiperfans = 0;
+	fans = 0;
+	paparazzis = 0;
+	stalkers = 0;
+	lunatics = 0;
 	bots = 0;
 	lpc = 1;
 	followerCost = 10;
-	doubleFanCost = 500;
-	superFanCost = 100;
-	doubleSuperFanCost = 1000;
-	megaFanCost = 500;
-	doubleMegaFanCost = 6000;
-	ultraFanCost = 1000;
-	doubleUltraFanCost = 12000;
-	hiperFanCost = 5000;
-	doubleHiperFanCost = 25000;
+	hypeFollowersCost = 500;
+	FansCost = 100;
+	hypeFansCost = 1000;
+	paparazzisCost = 500;
+	hypePaparazzisCost = 6000;
+	stalkersCost = 1000;
+	hypeStalkersCost = 12000;
+	lunaticsCost = 5000;
+	hypeLunaticsCost = 25000;
 	botCost = 10000;
 	doubleBotsCost = 50000;
-	addClickCost = 20000;
-	doubleClickCost = 45000;
+	addClickCost = 1000;
+	/*doubleClickCost = 45000;*/
 	updateLikes();
 	updateLPS();
 	updateLPC();
 	followerLPS = 1;
 	document.getElementById('followerLPS').innerHTML = followerLPS;
-	superFanLPS = 2;
-	document.getElementById('superFanLPS').innerHTML = superFanLPS;
-	megaFanLPS = 4;
-	document.getElementById('megaFanLPS').innerHTML = megaFanLPS;
-	ultraFanLPS = 8;
-	document.getElementById('ultraFanLPS').innerHTML = ultraFanLPS;
-	hiperFanLPS = 16;
-	document.getElementById('hiperFanLPS').innerHTML = hiperFanLPS;
+	hypeFansLPS = 2;
+	document.getElementById('FansLPS').innerHTML = FansLPS;
+	paparazzisLPS = 4;
+	document.getElementById('paparazzisLPS').innerHTML = paparazzisLPS;
+	stalkersLPS = 8;
+	document.getElementById('stalkersLPS').innerHTML = stalkersLPS;
+	lunaticsLPS = 16;
+	document.getElementById('lunaticsLPS').innerHTML = lunaticsLPS;
 	botLPS = 32;
 	document.getElementById('botLPS').innerHTML = botLPS;
 	document.getElementById('followers').innerHTML = nf.format(followers);
 	document.getElementById('followerCost').innerHTML = nf.format(followerCost);
-	document.getElementById('doubleFanCost').innerHTML = nf.format(doubleFanCost);
-	document.getElementById('superfans').innerHTML = nf.format(superfans);
-	document.getElementById('superFanCost').innerHTML = nf.format(superFanCost);
-	document.getElementById('doubleSuperFanCost').innerHTML = nf.format(doubleSuperFanCost);
-	document.getElementById('megafans').innerHTML = nf.format(megafans);
-	document.getElementById('megaFanCost').innerHTML = nf.format(megaFanCost);
-	document.getElementById('doubleMegaFanCost').innerHTML = nf.format(doubleMegaFanCost);
-	document.getElementById('ultrafans').innerHTML = nf.format(ultrafans);
-	document.getElementById('ultraFanCost').innerHTML = nf.format(ultraFanCost);
-	document.getElementById('doubleUltraFanCost').innerHTML = nf.format(doubleUltraFanCost);
-	document.getElementById('hiperfans').innerHTML = nf.format(hiperfans);
-	document.getElementById('hiperFanCost').innerHTML = nf.format(hiperFanCost);
-	document.getElementById('doubleHiperFanCost').innerHTML = nf.format(doubleHiperFanCost);
+	document.getElementById('hypeFollowersCost').innerHTML = nf.format(hypeFollowersCost);
+	document.getElementById('fans').innerHTML = nf.format(fans);
+	document.getElementById('FansCost').innerHTML = nf.format(FansCost);
+	document.getElementById('hypeFansCost').innerHTML = nf.format(hypeFansCost);
+	document.getElementById('paparazzis').innerHTML = nf.format(paparazzis);
+	document.getElementById('paparazzisCost').innerHTML = nf.format(paparazzisCost);
+	document.getElementById('hypePaparazzisCost').innerHTML = nf.format(hypePaparazzisCost);
+	document.getElementById('stalkers').innerHTML = nf.format(stalkers);
+	document.getElementById('stalkersCost').innerHTML = nf.format(stalkersCost);
+	document.getElementById('hypeStalkersCost').innerHTML = nf.format(hypeStalkersCost);
+	document.getElementById('lunatics').innerHTML = nf.format(lunatics);
+	document.getElementById('lunaticsCost').innerHTML = nf.format(lunaticsCost);
+	document.getElementById('hypeLunaticsCost').innerHTML = nf.format(hypeLunaticsCost);
 	document.getElementById('bots').innerHTML = nf.format(bots);
 	document.getElementById('botCost').innerHTML = nf.format(botCost);
 	document.getElementById('doubleBotsCost').innerHTML = nf.format(doubleBotsCost);
 	document.getElementById('lpc').innerHTML = "LPC: " + nf.format(lpc);
 	document.getElementById('addClickCost').innerHTML = nf.format(addClickCost);
-	document.getElementById('doubleClickCost').innerHTML = nf.format(doubleClickCost);
+	/*document.getElementById('doubleClickCost').innerHTML = nf.format(doubleClickCost);*/
 	hypeFollowersPurchased = 0;
-	doubleSuperFansPurchased = 0;
-	doubleMegaFansPurchased = 0;
-	doubleUltraFansPurchased = 0;
-	doubleHiperFansPurchased = 0;
+	hypeFansPurchased = 0;
+	hypePaparazzisPurchased = 0;
+	hypeStalkersPurchased = 0;
+	hypeLunaticsPurchased = 0;
 	doubleBotsPurchased = 0;
-	doubleClickPurchased = 0;
+	/*doubleClickPurchased = 0;*/
 	autoSaveEnabled = 1;
 	darkThemeEnabled = 0;
 	musicsEnabled = 1;
+	document.querySelector('#NoMoreMagic').pause();
+	document.querySelector('#HouseInAForestLoop').play();
+	var musicsenabledcheckbox = document.getElementById("musicsenabled");
+	musicsenabledcheckbox.style.display="block";
+	musicsenabledcheckbox.style.visibility="initial";
+	var musicsdisabledcheckbox = document.getElementById("musicsdisabled");
+	musicsdisabledcheckbox.style.display="none";
+	musicsdisabledcheckbox.style.visibility="hidden";
 	localStorage.clear();
 };
 
@@ -227,7 +236,7 @@ function likeClick(lpc){
 
 //+1 FOLLOWER
 function gainFollower(){
-    var followerCost = Math.floor(10 * Math.pow(1.1,followers));     //adds a cost amount to each unit purchased
+    var followerCost = nf.format(Math.floor(10 * Math.pow(1.1,followers)));     //adds a cost amount to each unit purchased
     if(likes >= followerCost){                                   //check if the player has enough likes
         followers = followers + 1;                                   //item lpc increases
     	likes = likes - followerCost;                          //spend the likes
@@ -239,7 +248,7 @@ function gainFollower(){
 	else {
 		notEnoughLikes();                                //if you do not have enough likes, show an alert
 	};
-	var nextCostFollower = Math.floor(10 * Math.pow(1.1,followers));
+	var nextCostFollower = nf.format(Math.floor(10 * Math.pow(1.1,followers)));
     document.getElementById('followerCost').innerHTML = nextCostFollower;  //update the lpc for the player
 };
 
@@ -293,33 +302,33 @@ function hypeFollowersLPS() {                                 //updates the foll
 		}
 }
 
-//+1 SUPER FAN
-function addSuperFan(){
-    var superFanCost = Math.floor(100 * Math.pow(1.1,superfans));
-    if(likes >= superFanCost){
-        superfans = superfans + 1;
-    	likes = likes - superFanCost;
-        document.getElementById('superfans').innerHTML = superfans;
-        lps += superFanLPS;
+//+1 FAN
+function gainFan(){
+    var FansCost = nf.format(Math.floor(100 * Math.pow(1.1,fans)));
+    if(likes >= FansCost){
+        fans = fans + 1;
+    	likes = likes - FansCost;
+        document.getElementById('fans').innerHTML = fans;
+        lps += FansLPS;
 		updateLPS();
     }
 	else {
 		notEnoughLikes();
 	};
-	var nextCostSuperFan = Math.floor(100 * Math.pow(1.1,superfans));
-    document.getElementById('superFanCost').innerHTML = nextCostSuperFan;
+	var nextCostFans = nf.format(Math.floor(100 * Math.pow(1.1,fans)));
+    document.getElementById('FansCost').innerHTML = nextCostFans;
 };
 
-//x2 SUPER FANS
-function doubleSuperFan(){
-    var doubleSuperFanCost = 1000;
-    if(likes >= doubleSuperFanCost){
-    	likes = likes - doubleSuperFanCost;
+//HYPE FANS
+function hypeFans(){
+    var hypeFansCost = 1000;
+    if(likes >= hypeFansCost){
+    	likes = likes - hypeFansCost;
         updateLikes();
-		removeDoubleSuperFan();
-		doubleSuperFanLPS();
+		removeHypeFans();
+		hypeFansLPS();
 		updateLPS();
-		doubleSuperFansPurchased = 1;
+		hypeFansPurchased = 1;
 		document.getElementById("newupgradeicon").style.display = "none";
 		document.getElementById("newupgradeicon").style.visibility = "hidden";
 		document.getElementById("newupgradeicon2").style.display = "none";
@@ -330,63 +339,63 @@ function doubleSuperFan(){
 	};
 };
 
-function removeDoubleSuperFan() 
+function removeHypeFans() 
 { 
-   var rmvDoubleSuperFan = document.getElementById("DoubleSuperFans"); 
-   rmvDoubleSuperFan.style.display="none"; 
-   rmvDoubleSuperFan.style.visibility="hidden";
-   var rmvDoubleSuperFanBR = document.getElementById("brDoubleSuper"); 
-   rmvDoubleSuperFanBR.style.display="none"; 
-   rmvDoubleSuperFanBR.style.visibility="hidden";
+   var rmvHypeFans = document.getElementById("HypeFans"); 
+   rmvHypeFans.style.display="none"; 
+   rmvHypeFans.style.visibility="hidden";
+   var rmvHypeFansBR = document.getElementById("brHypeFans"); 
+   rmvHypeFansBR.style.display="none"; 
+   rmvHypeFansBR.style.visibility="hidden";
 }
 
-function recreateDoubleSuperFan() 
+function recreateHypeFans() 
 { 
-   var rctDoubleSuperFan = document.getElementById("DoubleSuperFans"); 
-   rctDoubleSuperFan.style.display="block"; 
-   rctDoubleSuperFan.style.visibility="initial";
-   var rctDoubleSuperFanBR = document.getElementById("brDoubleSuper"); 
-   rctDoubleSuperFanBR.style.display="block"; 
-   rctDoubleSuperFanBR.style.visibility="initial";
+   var rctHypeFans = document.getElementById("HypeFans"); 
+   rctHypeFans.style.display="block"; 
+   rctHypeFans.style.visibility="initial";
+   var rctHypeFansBR = document.getElementById("brHypeFans"); 
+   rctHypeFansBR.style.display="block"; 
+   rctHypeFansBR.style.visibility="initial";
 }
 
-function doubleSuperFanLPS() {
-	var doubleSuperFansLPS = document.getElementById("DoubleSuperFans");
-	if (doubleSuperFansLPS.style.visibility == "hidden") {
-			superFanLPS = 4;
+function hypeFansLPS() {
+	var hypeFansLPS = document.getElementById("HypeFans");
+	if (hypeFansLPS.style.visibility == "hidden") {
+			FansLPS = 4;
 			updateLPS();
 		} else {
-			superFanLPS = 2;
+			FansLPS = 2;
 		}
 }
 
-//+1 MEGA FAN
-function addMegaFan(){
-    var megaFanCost = Math.floor(500 * Math.pow(1.1,megafans));
-    if(likes >= megaFanCost){
-        megafans = megafans + 1;
-    	likes = likes - megaFanCost;
-        document.getElementById('megafans').innerHTML = megafans;
-        lps += megaFanLPS;
+//+1 PAPARAZZI
+function gainPaparazzi(){
+    var paparazzisCost = nf.format(Math.floor(500 * Math.pow(1.1,paparazzis)));
+    if(likes >= paparazzisCost){
+        paparazzis = paparazzis + 1;
+    	likes = likes - paparazzisCost;
+        document.getElementById('paparazzis').innerHTML = paparazzis;
+        lps += paparazzisLPS;
 		updateLPS();
     }
 	else {
 		notEnoughLikes();
 	};
-    var nextCostMegaFan = Math.floor(500 * Math.pow(1.1,megafans));
-    document.getElementById('megaFanCost').innerHTML = nextCostMegaFan;
+    var nextCostPaparazzis = nf.format(Math.floor(500 * Math.pow(1.1,paparazzis)));
+    document.getElementById('paparazzisCost').innerHTML = nextCostPaparazzis;
 };
 
-//x2 MEGA FANS
-function doubleMegaFan(){
-    var doubleUltraFanCost = 6000;
-    if(likes >= doubleMegaFanCost){
-    	likes = likes - doubleMegaFanCost;
+//HYPE PAPARAZZIS
+function hypePaparazzis(){
+    var hypePaparazzisCost = 6000;
+    if(likes >= hypePaparazzisCost){
+    	likes = likes - hypePaparazzisCost;
         updateLikes();
-		removeDoubleMegaFan();
-		doubleMegaFanLPS();
+		removeHypePaparazzis();
+		hypePaparazzisLPS();
 		updateLPS();
-		doubleMegaFansPurchased = 1;
+		hypePaparazzisPurchased = 1;
 		document.getElementById("newupgradeicon").style.display = "none";
 		document.getElementById("newupgradeicon").style.visibility = "hidden";
 		document.getElementById("newupgradeicon2").style.display = "none";
@@ -397,63 +406,63 @@ function doubleMegaFan(){
 	};
 };
 
-function removeDoubleMegaFan() 
+function removeHypePaparazzis() 
 { 
-   var rmvDoubleMegaFan = document.getElementById("DoubleMegaFans"); 
-   rmvDoubleMegaFan.style.display="none"; 
-   rmvDoubleMegaFan.style.visibility="hidden";
-   var rmvDoubleMegaFanBR = document.getElementById("brDoubleMega"); 
-   rmvDoubleMegaFanBR.style.display="none"; 
-   rmvDoubleMegaFanBR.style.visibility="hidden";
+   var rmvHypePaparazzis = document.getElementById("HypePaparazzis"); 
+   rmvHypePaparazzis.style.display="none"; 
+   rmvHypePaparazzis.style.visibility="hidden";
+   var rmvHypePaparazzisBR = document.getElementById("brHypePaparazzis"); 
+   rmvHypePaparazzisBR.style.display="none"; 
+   rmvHypePaparazzisBR.style.visibility="hidden";
 }
 
-function recreateDoubleMegaFan() 
+function recreateHypePaparazzis() 
 { 
-   var rctDoubleMegaFan = document.getElementById("DoubleMegaFans"); 
-   rctDoubleMegaFan.style.display="block"; 
-   rctDoubleMegaFan.style.visibility="initial";
-   var rctDoubleMegaFanBR = document.getElementById("brDoubleMega"); 
-   rctDoubleMegaFanBR.style.display="block"; 
-   rctDoubleMegaFanBR.style.visibility="initial";
+   var rctHypePaparazzis = document.getElementById("HypePaparazzis"); 
+   rctHypePaparazzis.style.display="block"; 
+   rctHypePaparazzis.style.visibility="initial";
+   var rctHypePaparazzisBR = document.getElementById("brHypePaparazzis"); 
+   rctHypePaparazzisBR.style.display="block"; 
+   rctHypePaparazzisBR.style.visibility="initial";
 }
 
-function doubleMegaFanLPS() {
-	var doubleMegaFansLPS = document.getElementById("DoubleMegaFans");
-	if (doubleMegaFansLPS.style.visibility == "hidden") {
-			megaFanLPS = 8;
+function hypePaparazzisLPS() {
+	var hypePaparazzisLPS = document.getElementById("HypePaparazzis");
+	if (hypePaparazzisLPS.style.visibility == "hidden") {
+			paparazzisLPS = 8;
 			updateLPS();
 		} else {
-			megaFanLPS = 4;
+			paparazzisLPS = 4;
 		}
 }
 
-//+1 ULTRA FAN
-function addUltraFan(){
-    var ultraFanCost = Math.floor(1000 * Math.pow(1.1,ultrafans));
-    if(likes >= ultraFanCost){
-        ultrafans = ultrafans + 1;
-    	likes = likes - ultraFanCost;
-        document.getElementById('ultrafans').innerHTML = ultrafans;
-        lps += ultraFanLPS;
+//+1 STALKER
+function gainStalker(){
+    var stalkersCost = nf.format(Math.floor(1000 * Math.pow(1.1,stalkers)));
+    if(likes >= stalkersCost){
+        stalkers = stalkers + 1;
+    	likes = likes - stalkersCost;
+        document.getElementById('stalkers').innerHTML = stalkers;
+        lps += stalkersLPS;
 		updateLPS();
     }
 	else {
 		notEnoughLikes();
 	};
-    var nextCostUltraFan = Math.floor(1000 * Math.pow(1.1,ultrafans));
-    document.getElementById('ultraFanCost').innerHTML = nextCostUltraFan;
+    var nextCostStalkers = nf.format(Math.floor(1000 * Math.pow(1.1,stalkers)));
+    document.getElementById('stalkersCost').innerHTML = nextCostStalkers;
 };
 
-//x2 ULTRA FANS
-function doubleUltraFan(){
-    var doubleUltraFanCost = 12000;
-    if(likes >= doubleUltraFanCost){
-    	likes = likes - doubleUltraFanCost;
+//HYPE STALKERS
+function hypeStalkers(){
+    var hypeStalkersCost = 12000;
+    if(likes >= hypeStalkersCost){
+    	likes = likes - hypeStalkersCost;
         updateLikes();
-		removeDoubleUltraFan();
-		doubleUltraFanLPS();
+		removeHypeStalkers();
+		hypeStalkersLPS();
 		updateLPS();
-		doubleUltraFansPurchased = 1;
+		hypeStalkersPurchased = 1;
 		document.getElementById("newupgradeicon").style.display = "none";
 		document.getElementById("newupgradeicon").style.visibility = "hidden";
 		document.getElementById("newupgradeicon2").style.display = "none";
@@ -464,63 +473,63 @@ function doubleUltraFan(){
 	};
 };
 
-function removeDoubleUltraFan() 
+function removeHypeStalkers() 
 { 
-   var rmvDoubleUltraFan = document.getElementById("DoubleUltraFans"); 
-   rmvDoubleUltraFan.style.display="none"; 
-   rmvDoubleUltraFan.style.visibility="hidden";
-   var rmvDoubleUltraFanBR = document.getElementById("brDoubleUltra"); 
-   rmvDoubleUltraFanBR.style.display="none"; 
-   rmvDoubleUltraFanBR.style.visibility="hidden";
+   var rmvHypeStalkers = document.getElementById("HypeStalkers"); 
+   rmvHypeStalkers.style.display="none"; 
+   rmvHypeStalkers.style.visibility="hidden";
+   var rmvHypeStalkersBR = document.getElementById("brHypeStalkers"); 
+   rmvHypeStalkersBR.style.display="none"; 
+   rmvHypeStalkersBR.style.visibility="hidden";
 }
 
-function recreateDoubleUltraFan() 
+function recreateHypeStalkers() 
 { 
-   var rctDoubleUltraFan = document.getElementById("DoubleUltraFans"); 
-   rctDoubleUltraFan.style.display="block"; 
-   rctDoubleUltraFan.style.visibility="initial";
-   var rctDoubleUltraFanBR = document.getElementById("brDoubleUltra"); 
-   rctDoubleUltraFanBR.style.display="block"; 
-   rctDoubleUltraFanBR.style.visibility="initial";
+   var rctHypeStalkers = document.getElementById("HypeStalkers"); 
+   rctHypeStalkers.style.display="block"; 
+   rctHypeStalkers.style.visibility="initial";
+   var rctHypeStalkersBR = document.getElementById("brHypeStalkers"); 
+   rctHypeStalkersBR.style.display="block"; 
+   rctHypeStalkersBR.style.visibility="initial";
 }
 
-function doubleUltraFanLPS() {
-	var doubleUltraFansLPS = document.getElementById("DoubleUltraFans");
-	if (doubleUltraFansLPS.style.visibility == "hidden") {
-			ultraFanLPS = 16;
+function hypeStalkersLPS() {
+	var hypeStalkersLPS = document.getElementById("HypeStalkers");
+	if (hypeStalkersLPS.style.visibility == "hidden") {
+			stalkersLPS = 16;
 			updateLPS();
 		} else {
-			ultraFanLPS = 8;
+			stalkersLPS = 8;
 		}
 }
 
-//+1 HIPER FAN
-function addHiperFan(){
-    var hiperFanCost = Math.floor(5000 * Math.pow(1.1,hiperfans));
-    if(likes >= hiperFanCost){
-        hiperfans = hiperfans + 1;
-    	likes = likes - hiperFanCost;
-        document.getElementById('hiperfans').innerHTML = hiperfans;
-        lps += ultraFanLPS;
+//+1 LUNATIC
+function gainLunatic(){
+    var lunaticsCost = nf.format(Math.floor(5000 * Math.pow(1.1,lunatics)));
+    if(likes >= lunaticsCost){
+        lunatics = lunatics + 1;
+    	likes = likes - lunaticsCost;
+        document.getElementById('lunatics').innerHTML = lunatics;
+        lps += lunaticsLPS;
 		updateLPS();
     }
 	else {
 		notEnoughLikes();
 	};
-    var nextCostHiperFan = Math.floor(5000 * Math.pow(1.1,hiperfans));
-    document.getElementById('hiperFanCost').innerHTML = nextCostHiperFan;
+    var nextCostLunatics = nf.format(Math.floor(5000 * Math.pow(1.1,lunatics)));
+    document.getElementById('lunaticsCost').innerHTML = nextCostLunatics;
 };
 
-//x2 HIPER FANS
-function doubleHiperFan(){
-    var doubleHiperFanCost = 25000;
-    if(likes >= doubleHiperFanCost){
-    	likes = likes - doubleHiperFanCost;
+//HYPE LUNATICS
+function hypeLunatics(){
+    var hypeLunaticsCost = 25000;
+    if(likes >= hypeLunaticsCost){
+    	likes = likes - hypeLunaticsCost;
         updateLikes();
-		removeDoubleHiperFan();
-		doubleHiperFanLPS();
+		removeHypeLunatics();
+		hypeLunaticsLPS();
 		updateLPS();
-		doubleHiperFansPurchased = 1;
+		hypeLunaticsPurchased = 1;
 		document.getElementById("newupgradeicon").style.display = "none";
 		document.getElementById("newupgradeicon").style.visibility = "hidden";
 		document.getElementById("newupgradeicon2").style.display = "none";
@@ -531,39 +540,39 @@ function doubleHiperFan(){
 	};
 };
 
-function removeDoubleHiperFan() 
+function removeHypeLunatics() 
 { 
-   var rmvDoubleHiperFan = document.getElementById("DoubleHiperFans"); 
-   rmvDoubleHiperFan.style.display="none"; 
-   rmvDoubleHiperFan.style.visibility="hidden";
-   var rmvDoubleHiperFanBR = document.getElementById("brDoubleHiper"); 
-   rmvDoubleHiperFanBR.style.display="none"; 
-   rmvDoubleHiperFanBR.style.visibility="hidden";
+   var rmvHypeLunatics = document.getElementById("HypeLunatics"); 
+   rmvHypeLunatics.style.display="none"; 
+   rmvHypeLunatics.style.visibility="hidden";
+   var rmvHypeLunaticsBR = document.getElementById("brHypeLunatics"); 
+   rmvHypeLunaticsBR.style.display="none"; 
+   rmvHypeLunaticsBR.style.visibility="hidden";
 }
 
-function recreateDoubleHiperFan() 
+function recreateHypeLunatics() 
 { 
-   var rctDoubleHiperFan = document.getElementById("DoubleHiperFans"); 
-   rctDoubleHiperFan.style.display="block"; 
-   rctDoubleHiperFan.style.visibility="initial";
-   var rctDoubleHiperFanBR = document.getElementById("brDoubleHiper"); 
-   rctDoubleHiperFanBR.style.display="block"; 
-   rctDoubleHiperFanBR.style.visibility="initial";
+   var rctHypeLunatics = document.getElementById("HypeLunatics"); 
+   rctHypeLunatics.style.display="block"; 
+   rctHypeLunatics.style.visibility="initial";
+   var rctHypeLunaticsBR = document.getElementById("brHypeLunatics"); 
+   rctHypeLunaticsBR.style.display="block"; 
+   rctHypeLunaticsBR.style.visibility="initial";
 }
 
-function doubleHiperFanLPS() {
-	var doubleHiperFanLPS = document.getElementById("DoubleHiperFans");
-	if (doubleHiperFanLPS.style.visibility == "hidden") {
-			hiperFanLPS = 32;
+function hypeLunaticsLPS() {
+	var hypeLunaticsLPS = document.getElementById("HypeLunatics");
+	if (hypeLunaticsLPS.style.visibility == "hidden") {
+			lunaticsLPS = 32;
 			updateLPS();
 		} else {
-			ultraFanLPS = 16;
+			lunaticsLPS = 16;
 		}
 }
 
 //+1 BOT
 function addBot(){
-    var botCost = Math.floor(10000 * Math.pow(1.1,bots));
+    var botCost = nf.format(Math.floor(10000 * Math.pow(1.1,bots)));
     if(likes >= botCost){
         bots = bots + 1;
     	likes = likes - botCost;
@@ -574,7 +583,7 @@ function addBot(){
 	else {
 		notEnoughLikes();
 	};
-    var nextCostBot = Math.floor(10000 * Math.pow(1.1,bots));
+    var nextCostBot = nf.format(Math.floor(10000 * Math.pow(1.1,bots)));
     document.getElementById('botCost').innerHTML = nextCostBot;
 };
 
@@ -630,7 +639,7 @@ function doubleBotsLPS() {
 
 //+1 CLICK
 function addClick(){
-    var addClickCost = Math.floor(20000 * Math.pow(1.1,lpc));
+    var addClickCost = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
     if(likes >= addClickCost){
         lpc = lpc + 1;
     	likes = likes - addClickCost;
@@ -642,18 +651,19 @@ function addClick(){
 	else {
 		notEnoughLikes();
 	};
-    var nextCostAddClick = Math.floor(20000 * Math.pow(1.1,lpc));
+    var nextCostAddClick = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
     document.getElementById('addClickCost').innerHTML = nextCostAddClick;
+	addClickCost = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
 };
 
-//x2 CLICK
+/*//x2 CLICK
 function doubleClick(){
     var doubleClickCost = 45000;
     if(likes >= doubleClickCost){
         lpc = lpc * 2;
     	likes = likes - doubleClickCost;
         document.getElementById('lpc').innerHTML = lpc;
-		var nextCostAddClick = Math.floor(20000 * Math.pow(1.1,lpc));
+		var nextCostAddClick = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
 		document.getElementById('addClickCost').innerHTML = nextCostAddClick;
         updateLikes();
 		removeDoubleClick();
@@ -674,9 +684,9 @@ function removeDoubleClick()
    var rmvDoubleClick = document.getElementById("DoubleClick");
    rmvDoubleClick.style.display="none";
    rmvDoubleClick.style.visibility="hidden";
-   /*var rmvDoubleClickBR = document.getElementById("brDoubleClick");
+   var rmvDoubleClickBR = document.getElementById("brDoubleClick");
    rmvDoubleClickBR.style.display="none";
-   rmvDoubleClickBR.style.visibility="hidden";*/
+   rmvDoubleClickBR.style.visibility="hidden";
 }
 
 function recreateDoubleClick()
@@ -684,10 +694,10 @@ function recreateDoubleClick()
    var rctDoubleClick = document.getElementById("DoubleClick"); 
    rctDoubleClick.style.display="block"; 
    rctDoubleClick.style.visibility="initial";
-   /*var rctDoubleClickBR = document.getElementById("brDoubleClick"); 
+   var rctDoubleClickBR = document.getElementById("brDoubleClick"); 
    rctDoubleClickBR.style.display="block"; 
-   rctDoubleClickBR.style.visibility="initial";*/
-}
+   rctDoubleClickBR.style.visibility="initial";
+}*/
 
 //INSUFFICIENT LIKES
 function notEnoughLikes() {
@@ -721,10 +731,10 @@ function updateLikes(){
 function updateLPS(){
 	document.getElementById('lps').innerHTML = 'LPS: ' + nf.format(lps);
 	document.getElementById('followerLPS').innerHTML = followerLPS;
-	document.getElementById('superFanLPS').innerHTML = superFanLPS;
-	document.getElementById('megaFanLPS').innerHTML = megaFanLPS;
-	document.getElementById('ultraFanLPS').innerHTML = ultraFanLPS;
-	document.getElementById('hiperFanLPS').innerHTML = hiperFanLPS;
+	document.getElementById('FansLPS').innerHTML = FansLPS;
+	document.getElementById('paparazzisLPS').innerHTML = paparazzisLPS;
+	document.getElementById('stalkersLPS').innerHTML = stalkersLPS;
+	document.getElementById('lunaticsLPS').innerHTML = lunaticsLPS;
 	document.getElementById('botLPS').innerHTML = botLPS;
 }
 
@@ -737,10 +747,10 @@ function updateLPC(){
 //TIME INTERVAL (LIKES PER SECOND)
 window.setInterval(function(){
 	likes += (followerLPS * followers);
-	likes += (superFanLPS * superfans);
-	likes += (megaFanLPS * megafans);
-	likes += (ultraFanLPS * ultrafans);
-	likes += (hiperFanLPS * hiperfans);
+	likes += (FansLPS * fans);
+	likes += (paparazzisLPS * paparazzis);
+	likes += (stalkersLPS * stalkers);
+	likes += (lunaticsLPS * lunatics);
 	likes += (botLPS * bots);
 	updateLikes();
 }, 1000);
@@ -890,8 +900,8 @@ window.setInterval(function(){
 }, 100);
 
 window.setInterval(function(){
-	if (superfans >= 10 && doubleSuperFansPurchased == 0) {
-		recreateDoubleSuperFan();
+	if (fans >= 10 && hypeFansPurchased == 0) {
+		recreateHypeFans();
 		document.getElementById("newupgradeicon").style.display = "initial";
 		document.getElementById("newupgradeicon").style.visibility = "visible";
 		document.getElementById("newupgradeicon2").style.display = "initial";
@@ -900,8 +910,8 @@ window.setInterval(function(){
 }, 100);
 
 window.setInterval(function(){
-	if (megafans >= 10 && doubleMegaFansPurchased == 0) {
-		recreateDoubleMegaFan();
+	if (paparazzis >= 10 && hypePaparazzisPurchased == 0) {
+		recreateHypePaparazzis();
 		document.getElementById("newupgradeicon").style.display = "initial";
 		document.getElementById("newupgradeicon").style.visibility = "visible";
 		document.getElementById("newupgradeicon2").style.display = "initial";
@@ -910,8 +920,8 @@ window.setInterval(function(){
 }, 100);
 
 window.setInterval(function(){
-	if (ultrafans >= 10 && doubleUltraFansPurchased == 0) {
-		recreateDoubleUltraFan();
+	if (stalkers >= 10 && hypeStalkersPurchased == 0) {
+		recreateHypeStalkers();
 		document.getElementById("newupgradeicon").style.display = "initial";
 		document.getElementById("newupgradeicon").style.visibility = "visible";
 		document.getElementById("newupgradeicon2").style.display = "initial";
@@ -920,8 +930,8 @@ window.setInterval(function(){
 }, 100);
 
 window.setInterval(function(){
-	if (hiperfans >= 10 && doubleHiperFansPurchased == 0) {
-		recreateDoubleHiperFan();
+	if (lunatics >= 10 && hypeLunaticsPurchased == 0) {
+		recreateHypeLunatics();
 		document.getElementById("newupgradeicon").style.display = "initial";
 		document.getElementById("newupgradeicon").style.visibility = "visible";
 		document.getElementById("newupgradeicon2").style.display = "initial";
@@ -939,7 +949,7 @@ window.setInterval(function(){
 	}
 }, 100);
 
-window.setInterval(function(){
+/*window.setInterval(function(){
 	if (lpc >= 10 && doubleClickPurchased == 0) {
 		recreateDoubleClick();
 		document.getElementById("newupgradeicon").style.display = "initial";
@@ -947,7 +957,7 @@ window.setInterval(function(){
 		document.getElementById("newupgradeicon2").style.display = "initial";
 		document.getElementById("newupgradeicon2").style.visibility="visible";
 	}
-}, 100);
+}, 100);*/
 
 var unknvar = 0;
 
@@ -989,30 +999,30 @@ function saveGame() {
 	localStorage.setItem("lpc", JSON.stringify(lpc));
 	localStorage.setItem("followerLPS", JSON.stringify(followerLPS));
 	localStorage.setItem("followers", JSON.stringify(followers));
-	localStorage.setItem("superFanLPS", JSON.stringify(superFanLPS));
-	localStorage.setItem("superfans", JSON.stringify(superfans));
-	localStorage.setItem("megaFanLPS", JSON.stringify(megaFanLPS));
-	localStorage.setItem("megafans", JSON.stringify(megafans));
-	localStorage.setItem("ultraFanLPS", JSON.stringify(ultraFanLPS));
-	localStorage.setItem("ultrafans", JSON.stringify(ultrafans));
-	localStorage.setItem("hiperFanLPS", JSON.stringify(hiperFanLPS));
-	localStorage.setItem("hiperfans", JSON.stringify(hiperfans));
+	localStorage.setItem("FansLPS", JSON.stringify(FansLPS));
+	localStorage.setItem("fans", JSON.stringify(fans));
+	localStorage.setItem("paparazzisLPS", JSON.stringify(paparazzisLPS));
+	localStorage.setItem("paparazzis", JSON.stringify(paparazzis));
+	localStorage.setItem("stalkersLPS", JSON.stringify(stalkersLPS));
+	localStorage.setItem("stalkers", JSON.stringify(stalkers));
+	localStorage.setItem("lunaticsLPS", JSON.stringify(lunaticsLPS));
+	localStorage.setItem("lunatics", JSON.stringify(lunatics));
 	localStorage.setItem("botLPS", JSON.stringify(botLPS));
 	localStorage.setItem("bots", JSON.stringify(bots));
 	localStorage.setItem("followerCost", JSON.stringify(followerCost));
-	localStorage.setItem("superFanCost", JSON.stringify(superFanCost));
-	localStorage.setItem("megaFanCost", JSON.stringify(megaFanCost));
-	localStorage.setItem("ultraFanCost", JSON.stringify(ultraFanCost));
-	localStorage.setItem("hiperFanCost", JSON.stringify(hiperFanCost));
+	localStorage.setItem("FansCost", JSON.stringify(FansCost));
+	localStorage.setItem("paparazzisCost", JSON.stringify(paparazzisCost));
+	localStorage.setItem("stalkersCost", JSON.stringify(stalkersCost));
+	localStorage.setItem("lunaticsCost", JSON.stringify(lunaticsCost));
 	localStorage.setItem("botCost", JSON.stringify(botCost));
-	localStorage.setItem("addClickCost", JSON.stringify(Math.floor(20000 * Math.pow(1.1,lpc))));
+	localStorage.setItem("addClickCost", JSON.stringify(Math.floor(1000 * Math.pow(1.2,lpc))));
 	localStorage.setItem("hypeFollowersPurchased", JSON.stringify(hypeFollowersPurchased));
-	localStorage.setItem("doubleSuperFansPurchased", JSON.stringify(doubleSuperFansPurchased));
-	localStorage.setItem("doubleMegaFansPurchased", JSON.stringify(doubleMegaFansPurchased));
-	localStorage.setItem("doubleUltraFansPurchased", JSON.stringify(doubleUltraFansPurchased));
-	localStorage.setItem("doubleHiperFansPurchased", JSON.stringify(doubleHiperFansPurchased));
+	localStorage.setItem("hypeFansPurchased", JSON.stringify(hypeFansPurchased));
+	localStorage.setItem("hypePaparazzisPurchased", JSON.stringify(hypePaparazzisPurchased));
+	localStorage.setItem("hypeStalkersPurchased", JSON.stringify(hypeStalkersPurchased));
+	localStorage.setItem("hypeLunaticsPurchased", JSON.stringify(hypeLunaticsPurchased));
 	localStorage.setItem("doubleBotsPurchased", JSON.stringify(doubleBotsPurchased));
-	localStorage.setItem("doubleClickPurchased", JSON.stringify(doubleClickPurchased));
+	/*localStorage.setItem("doubleClickPurchased", JSON.stringify(doubleClickPurchased));*/
 	localStorage.setItem("autoSaveEnabled", JSON.stringify(autoSaveEnabled));
 	localStorage.setItem("darkThemeEnabled", JSON.stringify(darkThemeEnabled));
 	localStorage.setItem("musicsEnabled", JSON.stringify(musicsEnabled));
@@ -1040,37 +1050,37 @@ function loadGame() {
 	if (JSON.parse(localStorage.getItem("followers")) == null) {
 		followers = 0;
 	}
-	superFanLPS = JSON.parse(localStorage.getItem("superFanLPS"));
-	if (JSON.parse(localStorage.getItem("superFanLPS")) == null) {
-		superFanLPS = 2;
+	FansLPS = JSON.parse(localStorage.getItem("FansLPS"));
+	if (JSON.parse(localStorage.getItem("FansLPS")) == null) {
+		FansLPS = 2;
 	}
-	superfans = JSON.parse(localStorage.getItem("superfans"));
-	if (JSON.parse(localStorage.getItem("superfans")) == null) {
-		superfans = 0;
+	fans = JSON.parse(localStorage.getItem("fans"));
+	if (JSON.parse(localStorage.getItem("fans")) == null) {
+		fans = 0;
 	}
-	megaFanLPS = JSON.parse(localStorage.getItem("megaFanLPS"));
-	if (JSON.parse(localStorage.getItem("megaFanLPS")) == null) {
-		megaFanLPS = 4;
+	paparazzisLPS = JSON.parse(localStorage.getItem("paparazzisLPS"));
+	if (JSON.parse(localStorage.getItem("paparazzisLPS")) == null) {
+		paparazzisLPS = 4;
 	}
-	megafans = JSON.parse(localStorage.getItem("megafans"));
-	if (JSON.parse(localStorage.getItem("megafans")) == null) {
-		megafans = 0;
+	paparazzis = JSON.parse(localStorage.getItem("paparazzis"));
+	if (JSON.parse(localStorage.getItem("paparazzis")) == null) {
+		paparazzis = 0;
 	}
-	ultraFanLPS = JSON.parse(localStorage.getItem("ultraFanLPS"));
-	if (JSON.parse(localStorage.getItem("ultraFanLPS")) == null) {
-		ultraFanLPS = 8;
+	stalkersLPS = JSON.parse(localStorage.getItem("stalkersLPS"));
+	if (JSON.parse(localStorage.getItem("stalkersLPS")) == null) {
+		stalkersLPS = 8;
 	}
-	ultrafans = JSON.parse(localStorage.getItem("ultrafans"));
-	if (JSON.parse(localStorage.getItem("ultrafans")) == null) {
-		ultrafans = 0;
+	stalkers = JSON.parse(localStorage.getItem("stalkers"));
+	if (JSON.parse(localStorage.getItem("stalkers")) == null) {
+		stalkers = 0;
 	}
-	hiperFanLPS = JSON.parse(localStorage.getItem("hiperFanLPS"));
-	if (JSON.parse(localStorage.getItem("hiperFanLPS")) == null) {
-		hiperFanLPS = 16;
+	lunaticsLPS = JSON.parse(localStorage.getItem("lunaticsLPS"));
+	if (JSON.parse(localStorage.getItem("lunaticsLPS")) == null) {
+		lunaticsLPS = 16;
 	}
-	hiperfans = JSON.parse(localStorage.getItem("hiperfans"));
-	if (JSON.parse(localStorage.getItem("hiperfans")) == null) {
-		hiperfans = 0;
+	lunatics = JSON.parse(localStorage.getItem("lunatics"));
+	if (JSON.parse(localStorage.getItem("lunatics")) == null) {
+		lunatics = 0;
 	}
 	botLPS = JSON.parse(localStorage.getItem("botLPS"));
 	if (JSON.parse(localStorage.getItem("botLPS")) == null) {
@@ -1084,21 +1094,21 @@ function loadGame() {
 	if (JSON.parse(localStorage.getItem("fanCost")) == null) {
 		fanCost = 10;
 	}
-	superFanCost = JSON.parse(localStorage.getItem("superFanCost"));
-	if (JSON.parse(localStorage.getItem("superFanCost")) == null) {
-		superFanCost = 100;
+	FansCost = JSON.parse(localStorage.getItem("FansCost"));
+	if (JSON.parse(localStorage.getItem("FansCost")) == null) {
+		FansCost = 100;
 	}
-	megaFanCost = JSON.parse(localStorage.getItem("megaFanCost"));
-	if (JSON.parse(localStorage.getItem("megaFanCost")) == null) {
-		megaFanCost = 500;
+	paparazzisCost = JSON.parse(localStorage.getItem("paparazzisCost"));
+	if (JSON.parse(localStorage.getItem("paparazzisCost")) == null) {
+		paparazzisCost = 500;
 	}
-	ultraFanCost = JSON.parse(localStorage.getItem("ultraFanCost"));
-	if (JSON.parse(localStorage.getItem("ultraFanCost")) == null) {
-		ultraFanCost = 1000;
+	stalkersCost = JSON.parse(localStorage.getItem("stalkersCost"));
+	if (JSON.parse(localStorage.getItem("stalkersCost")) == null) {
+		stalkersCost = 1000;
 	}
-	hiperFanCost = JSON.parse(localStorage.getItem("hiperFanCost"));
-	if (JSON.parse(localStorage.getItem("hiperFanCost")) == null) {
-		hiperFanCost = 5000;
+	lunaticsCost = JSON.parse(localStorage.getItem("lunaticsCost"));
+	if (JSON.parse(localStorage.getItem("lunaticsCost")) == null) {
+		lunaticsCost = 5000;
 	}
 	botCost = JSON.parse(localStorage.getItem("botCost"));
 	if (JSON.parse(localStorage.getItem("botCost")) == null) {
@@ -1106,36 +1116,36 @@ function loadGame() {
 	}
 	addClickCost = JSON.parse(localStorage.getItem("addClickCost"));
 	if (JSON.parse(localStorage.getItem("addClickCost")) == null) {
-		addClickCost = 22000;
+		addClickCost = 1000;
 	}
 	hypeFollowersPurchased = JSON.parse(localStorage.getItem("hypeFollowersPurchased"));
 	if (JSON.parse(localStorage.getItem("hypeFollowersPurchased")) == null) {
 		hypeFollowersPurchased = 0;
 	}
-	doubleSuperFansPurchased = JSON.parse(localStorage.getItem("doubleSuperFansPurchased"));
-	if (JSON.parse(localStorage.getItem("doubleSuperFansPurchased")) == null) {
-		doubleSuperFansPurchased = 0;
+	hypeFansPurchased = JSON.parse(localStorage.getItem("hypeFansPurchased"));
+	if (JSON.parse(localStorage.getItem("hypeFansPurchased")) == null) {
+		hypeFansPurchased = 0;
 	}
-	doubleMegaFansPurchased = JSON.parse(localStorage.getItem("doubleMegaFansPurchased"));
-	if (JSON.parse(localStorage.getItem("doubleMegaFansPurchased")) == null) {
-		doubleMegaFansPurchased = 0;
+	hypePaparazzisPurchased = JSON.parse(localStorage.getItem("hypePaparazzisPurchased"));
+	if (JSON.parse(localStorage.getItem("hypePaparazzisPurchased")) == null) {
+		hypePaparazzisPurchased = 0;
 	}
-	doubleUltraFansPurchased = JSON.parse(localStorage.getItem("doubleUltraFansPurchased"));
-	if (JSON.parse(localStorage.getItem("doubleUltraFansPurchased")) == null) {
-		doubleUltraFansPurchased = 0;
+	hypeStalkersPurchased = JSON.parse(localStorage.getItem("hypeStalkersPurchased"));
+	if (JSON.parse(localStorage.getItem("hypeStalkersPurchased")) == null) {
+		hypeStalkersPurchased = 0;
 	}
-	doubleHiperFansPurchased = JSON.parse(localStorage.getItem("doubleHiperFansPurchased"));
-	if (JSON.parse(localStorage.getItem("doubleHiperFansPurchased")) == null) {
-		doubleHiperFansPurchased = 0;
+	hypeLunaticsPurchased = JSON.parse(localStorage.getItem("hypeLunaticsPurchased"));
+	if (JSON.parse(localStorage.getItem("hypeLunaticsPurchased")) == null) {
+		hypeLunaticsPurchased = 0;
 	}
 	doubleBotsPurchased = JSON.parse(localStorage.getItem("doubleBotsPurchased"));
 	if (JSON.parse(localStorage.getItem("doubleBotsPurchased")) == null) {
 		doubleBotsPurchased = 0;
 	}
-	doubleClickPurchased = JSON.parse(localStorage.getItem("doubleClickPurchased"));
+	/*doubleClickPurchased = JSON.parse(localStorage.getItem("doubleClickPurchased"));
 	if (JSON.parse(localStorage.getItem("doubleClickPurchased")) == null) {
 		doubleClickPurchased = 0;
-	}
+	}*/
 	autoSaveEnabled = JSON.parse(localStorage.getItem("autoSaveEnabled"));
 	if (JSON.parse(localStorage.getItem("autoSaveEnabled")) == null) {
 		autoSaveEnabled = 1;
@@ -1156,18 +1166,18 @@ function loadGame() {
 	document.getElementById('followers').innerHTML = nf.format(followers);
 	document.getElementById('followerLPS').innerHTML = followerLPS;
 	document.getElementById('followerCost').innerHTML = nf.format(followerCost);
-	document.getElementById('superfans').innerHTML = nf.format(superfans);
-	document.getElementById('superFanLPS').innerHTML = superFanLPS;
-	document.getElementById('superFanCost').innerHTML = nf.format(superFanCost);
-	document.getElementById('megafans').innerHTML = nf.format(megafans);
-	document.getElementById('megaFanLPS').innerHTML = megaFanLPS;
-	document.getElementById('megaFanCost').innerHTML = nf.format(megaFanCost);
-	document.getElementById('ultrafans').innerHTML = nf.format(ultrafans);
-	document.getElementById('ultraFanLPS').innerHTML = ultraFanLPS;
-	document.getElementById('ultraFanCost').innerHTML = nf.format(ultraFanCost);
-	document.getElementById('hiperfans').innerHTML = nf.format(hiperfans);
-	document.getElementById('hiperFanLPS').innerHTML = hiperFanLPS;
-	document.getElementById('hiperFanCost').innerHTML = nf.format(hiperFanCost);
+	document.getElementById('fans').innerHTML = nf.format(fans);
+	document.getElementById('FansLPS').innerHTML = FansLPS;
+	document.getElementById('FansCost').innerHTML = nf.format(FansCost);
+	document.getElementById('paparazzis').innerHTML = nf.format(paparazzis);
+	document.getElementById('paparazzisLPS').innerHTML = paparazzisLPS;
+	document.getElementById('paparazzisCost').innerHTML = nf.format(paparazzisCost);
+	document.getElementById('stalkers').innerHTML = nf.format(stalkers);
+	document.getElementById('stalkersLPS').innerHTML = stalkersLPS;
+	document.getElementById('stalkersCost').innerHTML = nf.format(stalkersCost);
+	document.getElementById('lunatics').innerHTML = nf.format(lunatics);
+	document.getElementById('lunaticsLPS').innerHTML = lunaticsLPS;
+	document.getElementById('lunaticsCost').innerHTML = nf.format(lunaticsCost);
 	document.getElementById('bots').innerHTML = nf.format(bots);
 	document.getElementById('botLPS').innerHTML = botLPS;
 	document.getElementById('botCost').innerHTML = nf.format(botCost);
@@ -1225,13 +1235,13 @@ function removeSaveGameAlert()
    rmvSaveGameAlert.style.visibility="hidden";
 }
 
-if (lpc == 1) {
-	addClickCost = 20000;
+/*if (lpc == 1) {
+	addClickCost = 1000;
 	document.getElementById('addClickCost').innerHTML = nf.format(addClickCost);
 } else if (lpc > 1) {
-	addClickCost = Math.floor(20000 * Math.pow(1.1,lpc));
+	addClickCost = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
 	document.getElementById('addClickCost').innerHTML = nf.format(addClickCost);
-}
+}*/
 
 function enableDisableDarkTheme() {
 	if (darkThemeEnabled == 0) {
@@ -1330,10 +1340,10 @@ function enableDarkTheme() {
 	document.querySelector(".shopitem13").style.border = "1px solid white";
 	document.querySelector(".shopitem13btn").style.border = "1px solid white";
 	document.querySelector(".shopitem13icon").style.color = "white";
-	document.querySelector(".shopitem14").style.backgroundColor = "#333333";
+	/*document.querySelector(".shopitem14").style.backgroundColor = "#333333";
 	document.querySelector(".shopitem14").style.border = "1px solid white";
 	document.querySelector(".shopitem14btn").style.border = "1px solid white";
-	document.querySelector(".shopitem14icon").style.color = "white";
+	document.querySelector(".shopitem14icon").style.color = "white";*/
 	document.querySelector(".commontab").style.borderRight = "1px solid white";
 	document.querySelector(".menuicon1").style.color = "white";
 	document.querySelector(".menuicon2").style.color = "white";
@@ -1461,10 +1471,10 @@ function disableDarkTheme() {
 	document.querySelector(".shopitem13").style.border = "1px solid black";
 	document.querySelector(".shopitem13btn").style.border = "1px solid black";
 	document.querySelector(".shopitem13icon").style.color = "black";
-	document.querySelector(".shopitem14").style.backgroundColor = "white";
+	/*document.querySelector(".shopitem14").style.backgroundColor = "white";
 	document.querySelector(".shopitem14").style.border = "1px solid black";
 	document.querySelector(".shopitem14btn").style.border = "1px solid black";
-	document.querySelector(".shopitem14icon").style.color = "black";
+	document.querySelector(".shopitem14icon").style.color = "black";*/
 	document.querySelector(".commontab").style.borderRight = "1px solid black";
 	document.querySelector(".menuicon1").style.color = "black";
 	document.querySelector(".menuicon2").style.color = "black";
@@ -1586,3 +1596,7 @@ window.setInterval(function(){
 		stopMusic();
 	}
 }, 100);
+
+var nextCostAddClick = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
+document.getElementById('addClickCost').innerHTML = nextCostAddClick;
+addClickCost = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));

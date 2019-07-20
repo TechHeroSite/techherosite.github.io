@@ -99,13 +99,13 @@
 				</center>
 			</td>
 		</table>
-			<div id="ShopTab" style="width: 100%; float: left; margin-bottom: 100px; margin-top: 15px;">
+			<div class="TabOpening" id="ShopTab" style="width: 100%; float: left; margin-bottom: 100px; margin-top: 15px;">
 				<div id="FollowersDiv" style="width: 100%;">
 					<center>
 					<div class="shopitem1" id="GainFollower" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div class="shopitem1btn" id="BuyButton" onClick="gainFollower()" title="Gain Follower">
+								<div class="shopitem1btn" id="BuyButton" onClick="gainFollower()" title="+1 Follower">
 									<center>
 										<i class="material-icons shopitem1icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
 										<span style="padding-left: 5px; padding-right: 5px;">+1 Follower</span>
@@ -125,46 +125,46 @@
 					</center>
 					<br>
 				</div>
-				<div id="SuperFanDiv">
-					<div class="shopitem2" id="AddSuperFan" class="rounded">
+				<div id="FanDiv">
+					<div class="shopitem2" id="GainFan" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div class="shopitem2btn" id="BuyButton" onClick="addSuperFan()" title="Buy +1 Super Fan">
+								<div class="shopitem2btn" id="BuyButton" onClick="gainFan()" title="+1 Fan">
 									<center>
 										<i class="material-icons shopitem2icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
-										<span style="padding-left: 5px; padding-right: 5px;">+1 Super Fan</span>
+										<span style="padding-left: 5px; padding-right: 5px;">+1 Fan</span>
 									</center>
 								</div>
 							</td>
 							<td style="width: 5px;"></td>
 							<td id="ItemCell">
 								<div id="ItemInfo">
-									Super Fans: <span id="superfans">0</span><br />
-									LPS: <span id="superFanLPS">2</span><br />
-									Cost: <span id="superFanCost">100</span>
+									Fans: <span id="fans">0</span><br />
+									LPS: <span id="FansLPS">2</span><br />
+									Cost: <span id="FansCost">100</span>
 								</div>
 							</td>
 						</table>
 					</div>
 					<br>
 				</div>
-				<div id="MegaFanDiv">
-					<div class="shopitem3" id="AddMegaFan" class="rounded">
+				<div id="PaparazziDiv">
+					<div class="shopitem3" id="GainPaparazzi" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div class="shopitem3btn" id="BuyButton" onClick="addMegaFan()" title="Buy +1 Mega Fan">
+								<div class="shopitem3btn" id="BuyButton" onClick="gainPaparazzi()" title="+1 Paparazzi">
 									<center>
 										<i class="material-icons shopitem3icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
-										<span style="padding-left: 5px; padding-right: 5px;">+1 Mega Fan</span>
+										<span style="padding-left: 5px; padding-right: 5px;">+1 Paparazzi</span>
 									</center>
 								</div>
 							</td>
 							<td style="width: 5px;"></td>
 							<td id="ItemCell">
 								<div id="ItemInfo">
-									Mega Fans: <span id="megafans">0</span><br />
-									LPS: <span id="megaFanLPS">4</span><br />
-									Cost: <span id="megaFanCost">500</span>
+									Paparazzis: <span id="paparazzis">0</span><br />
+									LPS: <span id="paparazzisLPS">4</span><br />
+									Cost: <span id="paparazzisCost">500</span>
 								</div>
 							</td>
 						</table>
@@ -172,46 +172,46 @@
 					</div>
 					<br>
 				</div>
-				<div id="UltraFanDiv">
-					<div class="shopitem4" id="AddUltraFan" class="rounded">
+				<div id="StalkerDiv">
+					<div class="shopitem4" id="GainStalker" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div class="shopitem4btn" id="BuyButton" onClick="addUltraFan()" title="Buy +1 Ultra Fan">
+								<div class="shopitem4btn" id="BuyButton" onClick="gainStalker()" title="+1 Stalker">
 									<center>
 										<i class="material-icons shopitem4icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
-										<span style="padding-left: 5px; padding-right: 5px;">+1 Ultra Fan</span>
+										<span style="padding-left: 5px; padding-right: 5px;">+1 Stalker</span>
 									</center>
 								</div>
 							</td>
 							<td style="width: 5px;"></td>
 							<td id="ItemCell">
 								<div id="ItemInfo">
-									Ultra Fans: <span id="ultrafans">0</span><br />
-									LPS: <span id="ultraFanLPS">8</span><br />
-									Cost: <span id="ultraFanCost">1000</span>
+									Stalkers: <span id="stalkers">0</span><br />
+									LPS: <span id="stalkersLPS">8</span><br />
+									Cost: <span id="stalkersCost">1000</span>
 								</div>
 							</td>
 						</table>
 					</div>
 					<br>
 				</div>
-				<div id="HiperFanDiv">
-					<div class="shopitem5" id="AddHiperFan" class="rounded">
+				<div id="LunaticFanDiv">
+					<div class="shopitem5" id="GainLunatic" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div class="shopitem5btn" id="BuyButton" onClick="addHiperFan()" title="Buy +1 Hiper Fan">
+								<div class="shopitem5btn" id="BuyButton" onClick="gainLunatic()" title="+1 Lunatic">
 									<center>
 										<i class="material-icons shopitem5icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
-										<span style="padding-left: 5px; padding-right: 5px;">+1 Hiper Fan</span>
+										<span style="padding-left: 5px; padding-right: 5px;">+1 Lunatic</span>
 									</center>
 								</div>
 							</td>
 							<td style="width: 5px;"></td>
 							<td id="ItemCell">
 								<div id="ItemInfo">
-									Hiper Fans: <span id="hiperfans">0</span><br />
-									LPS: <span id="hiperFanLPS">16</span><br />
-									Cost: <span id="hiperFanCost">5000</span>
+									Lunatics: <span id="lunatics">0</span><br />
+									LPS: <span id="lunaticsLPS">16</span><br />
+									Cost: <span id="lunaticsCost">5000</span>
 								</div>
 							</td>
 						</table>
@@ -239,8 +239,10 @@
 							</td>
 						</table>
 					</div>
-					<br>
 				</div>
+			</div>
+			<div class="TabOpening" id="UpgradeTab" style="width: 100%; float: right; margin-bottom: 100px; display: none; visibility: hidden; margin-top: 15px;">
+				<!--<br id="brDoubleClick">-->
 				<div id="ClickDiv">
 					<div class="shopitem7" id="AddClick" class="rounded">
 						<table id="ItemTable">
@@ -248,23 +250,22 @@
 								<div class="shopitem7btn" id="BuyButton" onClick="addClick()" title="Buy +1 LPC (Likes per Click)">
 									<center>
 										<i class="material-icons shopitem7icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
-										<span style="padding-left: 5px; padding-right: 5px;">+1 LPC<br> (Clicks)</span>
+										<span style="padding-left: 5px; padding-right: 5px;">Upgrade</span>
 									</center>
 								</div>
 							</td>
 							<td style="width: 5px;"></td>
 							<td id="ItemCell">
 								<div id="ItemInfo">
-									LPC: <span id="lpcshop">1</span><br>
-									Cost: <span id="addClickCost">22000</span>
+									Likes per click<br>
+									Level: <span id="lpcshop">1</span><br>
+									Cost: <span id="addClickCost">1000</span>
 								</div>
 							</td>
 						</table>
 					</div>
 				</div>
-			</div>
-			<div id="UpgradeTab" style="width: 100%; float: right; margin-bottom: 100px; display: none; visibility: hidden; margin-top: 15px;">
-				<!--<br id="brDoubleClick">-->
+				<br id="brUpgradeLPC">
 				<div id="FollowerDiv">
 					<div class="shopitem8" id="HypeFollowers" class="rounded">
 						<table id="ItemTable">
@@ -272,7 +273,7 @@
 								<div class="shopitem8btn" id="BuyButton" onClick="hypeFollowers()" title="Hype Followers (2x LPS)">
 									<center>
 										<i class="material-icons shopitem8icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
-										<span style="padding-left: 5px; padding-right: 5px;">Hype Followers<br> (2x LPS)</span>
+										<span style="padding-left: 5px; padding-right: 5px;">Hype Followers<br>(2x LPS)</span>
 									</center>
 								</div>
 							</td>
@@ -287,14 +288,14 @@
 					</div>
 					<br id="brHypeFollowers">
 				</div>
-				<div id="SuperFanDiv">
-					<div class="shopitem9" id="DoubleSuperFans" class="rounded">
+				<div id="FanDiv">
+					<div class="shopitem9" id="HypeFans" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div class="shopitem9btn" id="BuyButton" onClick="doubleSuperFan()" title="Buy x2 Super Fans (LPS)">
+								<div class="shopitem9btn" id="BuyButton" onClick="hypeFans()" title="Hype Fans (2x LPS)">
 									<center>
 										<i class="material-icons shopitem9icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
-										<span style="padding-left: 5px; padding-right: 5px;">x2 Super Fans<br> (LPS)</span>
+										<span style="padding-left: 5px; padding-right: 5px;">Hype Fans<br>(2x LPS)</span>
 									</center>
 								</div>
 							</td>
@@ -302,21 +303,21 @@
 							<td id="ItemCell">
 								<div id="ItemInfo">
 									<span><b>Warning</b>:<br> You can only<br> use this once!</span><br>
-									Cost: <span id="doubleSuperFanCost">1000</span>
+									Cost: <span id="hypeFansCost">1000</span>
 								</div>
 							</td>
 						</table>
 					</div>
-					<br id="brDoubleSuper">
+					<br id="brHypeFans">
 				</div>
-				<div id="MegaFanDiv">
-					<div class="shopitem10" id="DoubleMegaFans" class="rounded">
+				<div id="PaparazziDiv">
+					<div class="shopitem10" id="HypePaparazzis" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div class="shopitem10btn" id="BuyButton" onClick="doubleMegaFan()" title="Buy x2 Mega Fans (LPS)">
+								<div class="shopitem10btn" id="BuyButton" onClick="hypePaparazzis()" title="Hype Paparazzis (2x LPS)">
 									<center>
 										<i class="material-icons shopitem10icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
-										<span style="padding-left: 5px; padding-right: 5px;">x2 Mega Fans<br> (LPS)</span>
+										<span style="padding-left: 5px; padding-right: 5px;">Hype Paparazzis<br>(2x LPS)</span>
 									</center>
 								</div>
 							</td>
@@ -324,21 +325,21 @@
 							<td id="ItemCell">
 								<div id="ItemInfo">
 									<span><b>Warning</b>:<br> You can only<br> use this once!</span><br>
-									Cost: <span id="doubleMegaFanCost">6000</span>
+									Cost: <span id="hypePaparazzisCost">6000</span>
 								</div>
 							</td>
 						</table>
 					</div>
-					<br id="brDoubleMega">
+					<br id="brHypePaparazzis">
 				</div>
-				<div id="UltraFanDiv">
-					<div class="shopitem11" id="DoubleUltraFans" class="rounded">
+				<div id="StalkerDiv">
+					<div class="shopitem11" id="HypeStalkers" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div class="shopitem11btn" id="BuyButton" onClick="doubleUltraFan()" title="Buy x2 Ultra Fans (LPS)">
+								<div class="shopitem11btn" id="BuyButton" onClick="hypeStalkers()" title="Hype Stalkers (2x LPS)">
 									<center>
 										<i class="material-icons shopitem11icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
-										<span style="padding-left: 5px; padding-right: 5px;">x2 Ultra Fans<br> (LPS)</span>
+										<span style="padding-left: 5px; padding-right: 5px;">Hype Stalkers<br>(2x LPS)</span>
 									</center>
 								</div>
 							</td>
@@ -346,21 +347,21 @@
 							<td id="ItemCell">
 								<div id="ItemInfo">
 									<span><b>Warning</b>:<br> You can only<br> use this once!</span><br>
-									Cost: <span id="doubleUltraFanCost">12000</span>
+									Cost: <span id="hypeStalkersCost">12000</span>
 								</div>
 							</td>
 						</table>
 					</div>
-					<br id="brDoubleUltra">
+					<br id="brHypeStalkers">
 				</div>
-				<div id="HiperFanDiv">
-					<div class="shopitem12" id="DoubleHiperFans" class="rounded">
+				<div id="LunaticDiv">
+					<div class="shopitem12" id="HypeLunatics" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div class="shopitem12btn" id="BuyButton" onClick="doubleHiperFan()" title="Buy x2 Hiper Fans (LPS)">
+								<div class="shopitem12btn" id="BuyButton" onClick="hypeLunatics()" title="Hype Lunatics (2x LPS)">
 									<center>
 										<i class="material-icons shopitem12icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
-										<span style="padding-left: 5px; padding-right: 5px;">x2 Hiper Fans<br> (LPS)</span>
+										<span style="padding-left: 5px; padding-right: 5px;">Hype Lunatics<br>(2x LPS)</span>
 									</center>
 								</div>
 							</td>
@@ -368,21 +369,21 @@
 							<td id="ItemCell">
 								<div id="ItemInfo">
 									<span><b>Warning</b>:<br> You can only<br> use this once!</span><br>
-									Cost: <span id="doubleHiperFanCost">25000</span>
+									Cost: <span id="hypeLunaticsCost">25000</span>
 								</div>
 							</td>
 						</table>
 					</div>
-					<br id="brDoubleHiper">
+					<br id="brHypeLunatics">
 				</div>
 				<div id="BotDiv">
 					<div class="shopitem13" id="DoubleBots" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
-								<div class="shopitem13btn" id="BuyButton" onClick="doubleBots()" title="Buy x2 Bots (LPS)">
+								<div class="shopitem13btn" id="BuyButton" onClick="doubleBots()" title="Upgrade Bots Plan (2x LPS)">
 									<center>
 										<i class="material-icons shopitem13icon" id="like-icon" style="font-size: 50px; color: black; display: inline-flex; vertical-align: middle;">add</i><br>
-										<span style="padding-left: 5px; padding-right: 5px;">x2 Bots<br> (LPS)</span>
+										<span style="padding-left: 5px; padding-right: 5px;">Upgrade Bots Plan<br>(2x LPS)</span>
 									</center>
 								</div>
 							</td>
@@ -397,7 +398,7 @@
 					</div>
 					<br id="brDoubleBot">
 				</div>
-				<div id="ClickDiv">
+				<!--<div id="ClickDiv">
 					<div class="shopitem14" id="DoubleClick" class="rounded">
 						<table id="ItemTable">
 							<td id="ItemCell">
@@ -417,7 +418,7 @@
 							</td>
 						</table>
 					</div>
-				</div>
+				</div>-->
 			</div>
 			</div>
 			</center>
