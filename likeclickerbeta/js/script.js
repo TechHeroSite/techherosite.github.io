@@ -802,6 +802,10 @@ function showHome() {
 	LikePage.style.display="block"; 
 	LikePage.style.visibility="visible";
 	document.getElementById("MenuCellHome").style.background="#a3a3a3";
+	
+	var x=window.scrollX;
+    var y=window.scrollY;
+    window.scrollTo(x, 0);
 }
 
 function showShop() {
@@ -819,6 +823,10 @@ function showShop() {
 	ShopPage.style.display="block";
 	ShopPage.style.visibility="visible";
 	document.getElementById("MenuCellShop").style.background="#a3a3a3";
+	
+	var x=window.scrollX;
+    var y=window.scrollY;
+    window.scrollTo(x, 0);
 }
 
 function showSettings() {
@@ -836,6 +844,10 @@ function showSettings() {
 	SettingsPage.style.display="block";
 	SettingsPage.style.visibility="visible";
 	document.getElementById("MenuCellSettings").style.background="#a3a3a3";
+	
+	var x=window.scrollX;
+    var y=window.scrollY;
+    window.scrollTo(x, 0);
 }
 
 function showShopTab() {
