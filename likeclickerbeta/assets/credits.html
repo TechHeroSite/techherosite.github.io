@@ -5,88 +5,50 @@
 	<style>
 		body {
 			font-family: "Roboto";
+			width: 100ph;
+			overflow-y: hidden;
+			user-select: none;
+		}
+		a, p, span, h3, b {
+			font-size: 20px;
+		}
+		a {
+			color: cyan;
+			text-decoration: none;
+		}
+		#yellowText {
+			color: yellow;
+		}
+		#greenText {
+			color: green;
+		}
+		marquee {
+			margin-bottom: 250px;
 		}
 	</style>
 </head>
 <body bgColor="#333333" style="color: white;">
-	<center id="credits">
-		<canvas id="canvas" height="400" width="500"><canvas>
-		<!--<b><h3>Like Clicker</h3></b>
-		<br>
-		<span>Developed by TechHero</span><br>
-		<span>Ideas by TechHero</span><br>
-		<span>Game design by TechHero</span><br><br><br>
-		<span>All by TechHero?</span><br>
-		<br>
-		<b><h3>Musics used</h3></b>
-		<span>House In A Forest Loop by <a href="https://opengameart.org/users/horrorpen" style="color: lightblue; text-decoration: none;">HorrorPen</a></span><br>
-		<span>No More Magic by <a href="https://opengameart.org/users/horrorpen" style="color: lightblue; text-decoration: none;">HorrorPen</a></span><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<span style="color: yellow;">That's it?</span><br><br>
-		<span style="color: green;">Yes, that's all. Did you expect more?</span><br><br>
-		<span style="color: yellow;">Of course, the credits were very short.</span><br><br>
-		<span style="color: green;">Hmm... I could use something to make them longer.</span><br><br><br><br><br><br>
-		<img src="1b5.png" width="100" height="100"><br><br><br><br><br>
-		<span style="color: yellow;">wut '-'</span><br><br>-->
-	</center>
-	<img id="shaggyimg" src="1b5.png" width="100" height="100" style="display: none;">
-	<script>
-(function(){
-	let canvas = document.getElementById('canvas'),
-		context = canvas.getContext('2d'),
-		namesPosition = -50,
-		scrollUp = setInterval(function(){
-			namesPosition-= 3;
-			context.clearRect(0, 0, canvas.width, canvas.height);
-			context.beginPath();
-			context.fillStyle = '#333';
-			context.fillRect(0,0,canvas.width,canvas.height);
-			context.closePath();
-
-			context.textAlign = "center";
-			context.beginPath();
-			/*context.shadowColor = '#000';*/
-			context.shadowBlur = 5;
-			context.shadowOffsetX = 3;
-			context.shadowOffsetY = 3;
-			context.font = "bold 20px roboto";
-			context.fillStyle = '#fff';
-			context.fillText('Like Clicker',250,350+namesPosition);
-			context.fillText('Developed by TechHero',250,410+namesPosition);
-			context.fillText('Ideas by TechHero',250,440+namesPosition);
-			context.fillText('Game design by TechHero',250,470+namesPosition);
-			context.fillText('All by TechHero?',250,520+namesPosition);
-			context.fillText('Musics used',250,580+namesPosition);
-			context.fillText('House In A Forest Loop by HorrorPen',250,640+namesPosition);
-			context.fillText('No More Magic by HorrorPen',250,670+namesPosition);
-			context.fillStyle = 'yellow';
-			context.fillText("That's it?",250,750+namesPosition);
-			context.fillStyle = 'green';
-			context.fillText("Yes, that's all. Did you expect more?",250,790+namesPosition);
-			context.fillStyle = 'yellow';
-			context.fillText("Of course, the credits were very short.",250,830+namesPosition);
-			context.fillStyle = 'green';
-			context.fillText("Hmm... I could use something to make them longer.",250,870+namesPosition);
-			var img = document.getElementById("shaggyimg");
-			context.drawImage(img, 200, 930+namesPosition, 100, 100);
-			context.fillStyle = 'yellow';
-			context.fillText("wut '-'",250,1150+namesPosition);
-			context.fillStyle = 'green';
-			context.fillText("Lorem ipsum dolor sit amet, consectetur adipiscing elit,",250,1600+namesPosition);
-			context.fillText("sed do eiusmod tempor incididunt ut labore et dolore",250,1600+namesPosition);
-			context.fillText("magna aliqua. Ut enim ad minim veniam, quis nostrud",250,1600+namesPosition);
-			context.fillText("exercitation ullamco laboris nisi ut aliquip ex ea",250,1600+namesPosition);
-			context.fillText("commodo consequat. Duis aute irure dolor in",250,1600+namesPosition);
-			context.fillText("reprehenderit in voluptate velit esse cillum",250,1600+namesPosition);
-			context.fillText("dolore eu fugiat nulla pariatur. Excepteur sint",250,1600+namesPosition);
-			context.fillText("occaecat cupidatat non proident, sunt in culpa",250,1600+namesPosition);
-			context.fillText("qui officia deserunt mollit anim id est laborum.",250,1600+namesPosition);
-			context.fillText("Oops, I made a mistake at the position of the texts :P",250,1640+namesPosition);
-			context.closePath();
-			if(namesPosition <= -1800){
-				clearInterval(scrollUp);
-			}
-		},62);
-})();
-	</script>
+	<marquee behavior="scroll" direction="up" scrollamount="10" scrolldelay="0">
+		<center id="credits">
+			<p><b><h3>Like Clicker</h3></b></p>
+			<p><span>Developed by TechHero</span><br>
+			<span>Ideas by TechHero</span><br>
+			<span>Game design by TechHero</span><br></p>
+			<p>All by TechHero?</p>
+			<p><b><h3>Musics used</h3></b></p>
+			<p><span>House In A Forest Loop</span><br>
+			<span>by <a href="https://opengameart.org/users/horrorpen">HorrorPen</a></span><br></p>
+			<p id="yellowText"><span>That's it?</span><br></p>
+			<p id="greenText"><span>Yes, that's all.</span><br>
+			<span>Did you expect more?</span><br></p>
+			<p id="yellowText"><span>Of course, the credits were very short.</span><br></p>
+			<p id="greenText"><span>Hmm... I could use something</span><br>
+			<span>to make them longer.</span><br></p>
+			<br><br><br><br><br>
+			<img id="shaggyimg" src="1b5.png" width="100" height="100">
+			<br><br><br><br><br>
+			<p id="yellowText"><span>wut '-'</span><br></p>
+		</center>
+	</marquee>
 </body>
 </html>

@@ -25,7 +25,7 @@ var autoSaveEnabled = 1;
 var darkThemeEnabled = 0;
 var musicsEnabled = 1;
 var followerCost = 10;
-var hypeFansCost = 100;
+var FansCost = 100;
 var paparazzisCost = 500;
 var stalkersCost = 1000;
 var lunaticsCost = 5000;
@@ -215,8 +215,6 @@ function resetGame(){
 	autoSaveEnabled = 1;
 	darkThemeEnabled = 0;
 	musicsEnabled = 1;
-	document.querySelector('#NoMoreMagic').pause();
-	document.querySelector('#HouseInAForestLoop').play();
 	var musicsenabledcheckbox = document.getElementById("musicsenabled");
 	musicsenabledcheckbox.style.display="block";
 	musicsenabledcheckbox.style.visibility="initial";
@@ -233,10 +231,28 @@ function likeClick(lpc){
 };
 
 //SHOP
+	
+followerCost = Math.floor(10 * Math.pow(1,followers));
+document.getElementById('followerCost').innerHTML = nf.format(followerCost);
+
+FansCost = Math.floor(100 * Math.pow(1,fans));
+document.getElementById('FansCost').innerHTML = nf.format(FansCost);
+
+paparazzisCost = Math.floor(500 * Math.pow(1,paparazzis));
+document.getElementById('paparazzisCost').innerHTML = nf.format(paparazzisCost);
+
+stalkersCost = Math.floor(1000 * Math.pow(1,stalkers));
+document.getElementById('stalkersCost').innerHTML = nf.format(stalkersCost);
+
+lunaticsCost = Math.floor(5000 * Math.pow(1,lunatics));
+document.getElementById('lunaticsCost').innerHTML = nf.format(lunaticsCost);
+
+botCost = Math.floor(10000 * Math.pow(1,bots));
+document.getElementById('botCost').innerHTML = nf.format(botCost);
 
 //+1 FOLLOWER
 function gainFollower(){
-    var followerCost = nf.format(Math.floor(10 * Math.pow(1.1,followers)));     //adds a cost amount to each unit purchased
+    /*var followerCost = Math.floor(10 * Math.pow(1.1,followers));     //adds a cost amount to each unit purchased*/
     if(likes >= followerCost){                                   //check if the player has enough likes
         followers = followers + 1;                                   //item lpc increases
     	likes = likes - followerCost;                          //spend the likes
@@ -244,12 +260,15 @@ function gainFollower(){
         updateLikes();                                    //update likes
 		lps += followerLPS;                                    //increases the total dps according to item dps
 		updateLPS();                                     //update dps
+		followerCost = Math.floor(10 * Math.pow(1.1,followers));
+		document.getElementById('followerCost').innerHTML = nf.format(followerCost);
     }
 	else {
 		notEnoughLikes();                                //if you do not have enough likes, show an alert
 	};
-	var nextCostFollower = nf.format(Math.floor(10 * Math.pow(1.1,followers)));
+	/*var nextCostFollower = Math.floor(10 * Math.pow(1.1,followers));
     document.getElementById('followerCost').innerHTML = nextCostFollower;  //update the lpc for the player
+	followerCost = Math.floor(10 * Math.pow(1,followers));*/
 };
 
 //HYPE FOLLOWERS
@@ -304,19 +323,21 @@ function hypeFollowersLPS() {                                 //updates the foll
 
 //+1 FAN
 function gainFan(){
-    var FansCost = nf.format(Math.floor(100 * Math.pow(1.1,fans)));
+    /*var FansCost = nf.format(Math.floor(100 * Math.pow(1.1,fans)));*/
     if(likes >= FansCost){
         fans = fans + 1;
     	likes = likes - FansCost;
         document.getElementById('fans').innerHTML = fans;
         lps += FansLPS;
 		updateLPS();
+		FansCost = Math.floor(100 * Math.pow(1.1,fans));
+		document.getElementById('FansCost').innerHTML = nf.format(FansCost);
     }
 	else {
 		notEnoughLikes();
 	};
-	var nextCostFans = nf.format(Math.floor(100 * Math.pow(1.1,fans)));
-    document.getElementById('FansCost').innerHTML = nextCostFans;
+	/*var nextCostFans = nf.format(Math.floor(100 * Math.pow(1.1,fans)));
+    document.getElementById('FansCost').innerHTML = nextCostFans;*/
 };
 
 //HYPE FANS
@@ -326,7 +347,7 @@ function hypeFans(){
     	likes = likes - hypeFansCost;
         updateLikes();
 		removeHypeFans();
-		hypeFansLPS();
+		hypeFanLPS();
 		updateLPS();
 		hypeFansPurchased = 1;
 		document.getElementById("newupgradeicon").style.display = "none";
@@ -359,7 +380,7 @@ function recreateHypeFans()
    rctHypeFansBR.style.visibility="initial";
 }
 
-function hypeFansLPS() {
+function hypeFanLPS() {
 	var hypeFansLPS = document.getElementById("HypeFans");
 	if (hypeFansLPS.style.visibility == "hidden") {
 			FansLPS = 4;
@@ -371,19 +392,21 @@ function hypeFansLPS() {
 
 //+1 PAPARAZZI
 function gainPaparazzi(){
-    var paparazzisCost = nf.format(Math.floor(500 * Math.pow(1.1,paparazzis)));
+    /*var paparazzisCost = nf.format(Math.floor(500 * Math.pow(1.1,paparazzis)));*/
     if(likes >= paparazzisCost){
         paparazzis = paparazzis + 1;
     	likes = likes - paparazzisCost;
         document.getElementById('paparazzis').innerHTML = paparazzis;
         lps += paparazzisLPS;
 		updateLPS();
+		paparazzisCost = Math.floor(500 * Math.pow(1.1,paparazzis));
+		document.getElementById('paparazzisCost').innerHTML = nf.format(paparazzisCost);
     }
 	else {
 		notEnoughLikes();
 	};
-    var nextCostPaparazzis = nf.format(Math.floor(500 * Math.pow(1.1,paparazzis)));
-    document.getElementById('paparazzisCost').innerHTML = nextCostPaparazzis;
+    /*var nextCostPaparazzis = nf.format(Math.floor(500 * Math.pow(1.1,paparazzis)));
+    document.getElementById('paparazzisCost').innerHTML = nextCostPaparazzis;*/
 };
 
 //HYPE PAPARAZZIS
@@ -438,19 +461,21 @@ function hypePaparazzisLPS() {
 
 //+1 STALKER
 function gainStalker(){
-    var stalkersCost = nf.format(Math.floor(1000 * Math.pow(1.1,stalkers)));
+    /*var stalkersCost = nf.format(Math.floor(1000 * Math.pow(1.1,stalkers)));*/
     if(likes >= stalkersCost){
         stalkers = stalkers + 1;
     	likes = likes - stalkersCost;
         document.getElementById('stalkers').innerHTML = stalkers;
         lps += stalkersLPS;
 		updateLPS();
+		stalkersCost = Math.floor(1000 * Math.pow(1.1,stalkers));
+		document.getElementById('stalkersCost').innerHTML = nf.format(stalkersCost);
     }
 	else {
 		notEnoughLikes();
 	};
-    var nextCostStalkers = nf.format(Math.floor(1000 * Math.pow(1.1,stalkers)));
-    document.getElementById('stalkersCost').innerHTML = nextCostStalkers;
+    /*var nextCostStalkers = nf.format(Math.floor(1000 * Math.pow(1.1,stalkers)));
+    document.getElementById('stalkersCost').innerHTML = nextCostStalkers;*/
 };
 
 //HYPE STALKERS
@@ -505,19 +530,21 @@ function hypeStalkersLPS() {
 
 //+1 LUNATIC
 function gainLunatic(){
-    var lunaticsCost = nf.format(Math.floor(5000 * Math.pow(1.1,lunatics)));
+    /*var lunaticsCost = nf.format(Math.floor(5000 * Math.pow(1.1,lunatics)));*/
     if(likes >= lunaticsCost){
         lunatics = lunatics + 1;
     	likes = likes - lunaticsCost;
         document.getElementById('lunatics').innerHTML = lunatics;
         lps += lunaticsLPS;
 		updateLPS();
+		lunaticsCost = Math.floor(5000 * Math.pow(1.1,lunatics));
+		document.getElementById('lunaticsCost').innerHTML = nf.format(lunaticsCost);
     }
 	else {
 		notEnoughLikes();
 	};
-    var nextCostLunatics = nf.format(Math.floor(5000 * Math.pow(1.1,lunatics)));
-    document.getElementById('lunaticsCost').innerHTML = nextCostLunatics;
+    /*var nextCostLunatics = nf.format(Math.floor(5000 * Math.pow(1.1,lunatics)));
+    document.getElementById('lunaticsCost').innerHTML = nextCostLunatics;*/
 };
 
 //HYPE LUNATICS
@@ -572,19 +599,21 @@ function hypeLunaticsLPS() {
 
 //+1 BOT
 function addBot(){
-    var botCost = nf.format(Math.floor(10000 * Math.pow(1.1,bots)));
+    /*var botCost = nf.format(Math.floor(10000 * Math.pow(1.1,bots)));*/
     if(likes >= botCost){
         bots = bots + 1;
     	likes = likes - botCost;
         document.getElementById('bots').innerHTML = bots;
         lps += botLPS;
 		updateLPS();
+		botCost = Math.floor(10000 * Math.pow(1.1,bots));
+		document.getElementById('botCost').innerHTML = nf.format(botCost);
     }
 	else {
 		notEnoughLikes();
 	};
-    var nextCostBot = nf.format(Math.floor(10000 * Math.pow(1.1,bots)));
-    document.getElementById('botCost').innerHTML = nextCostBot;
+    /*var nextCostBot = nf.format(Math.floor(10000 * Math.pow(1.1,bots)));
+    document.getElementById('botCost').innerHTML = nextCostBot;*/
 };
 
 //x2 BOTS
@@ -639,7 +668,7 @@ function doubleBotsLPS() {
 
 //+1 CLICK
 function addClick(){
-    var addClickCost = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
+    /*var addClickCost = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));*/
     if(likes >= addClickCost){
         lpc = lpc + 1;
     	likes = likes - addClickCost;
@@ -647,13 +676,15 @@ function addClick(){
 		document.getElementById('addClickCost').innerHTML = nextCostAddClick;
         updateLikes();
 		updateLPC();
+		addClickCost = Math.floor(1000 * Math.pow(1.2,lpc));
+		document.getElementById('addClickCost').innerHTML = nf.format(addClickCost);
     }
 	else {
 		notEnoughLikes();
 	};
-    var nextCostAddClick = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
+    /*var nextCostAddClick = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
     document.getElementById('addClickCost').innerHTML = nextCostAddClick;
-	addClickCost = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
+	addClickCost = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));*/
 };
 
 /*//x2 CLICK
@@ -832,6 +863,17 @@ function showUpgradesTab() {
 }
 
 //DIALOGS
+
+function disableScrolling(){
+    var x=window.scrollX;
+    var y=window.scrollY;
+    window.onscroll=function(){window.scrollTo(x, y);};
+}
+
+function enableScrolling(){
+    window.onscroll=function(){};
+}
+
 var dialog = document.querySelector('dialog');
     var showDialogButton = document.querySelector('.showchangelog');
     if (! dialog.showModal) {
@@ -839,9 +881,11 @@ var dialog = document.querySelector('dialog');
     }
     showDialogButton.addEventListener('click', function() {
       dialog.showModal();
+	  disableScrolling();
     });
     dialog.querySelector('.close').addEventListener('click', function() {
       dialog.close();
+	  enableScrolling();
     });
 	
 	var dialogReset = document.querySelector('#resetDialog');
@@ -851,12 +895,15 @@ var dialog = document.querySelector('dialog');
     }
     showDialogResetButton.addEventListener('click', function() {
 		dialogReset.showModal();
+		disableScrolling();
     });
     dialogReset.querySelector('.closedialog').addEventListener('click', function() {
       dialogReset.close();
+	  enableScrolling();
     });
 	dialogReset.querySelector('.resetgame').addEventListener('click', function() {
       dialogReset.close();
+	  enableScrolling();
     });
 	
 var dialogCredits = document.querySelector('#creditsDialog');
@@ -867,9 +914,11 @@ if (! dialogCredits.showModal) {
 showDialogCreditsButton.addEventListener('click', function() {
 	document.getElementById('creditsiframe').src = document.getElementById('creditsiframe').src;
 	dialogCredits.showModal();
+	disableScrolling();
 });
 dialogCredits.querySelector('.closecredits').addEventListener('click', function() {
 	dialogCredits.close();
+	enableScrolling();
 });
 
 /*function creditsReset() {
@@ -986,11 +1035,17 @@ if (! dialogUnknown.showModal) {
 }
 dialogUnknown.querySelector('.closeminigame').addEventListener('click', function() {
 	dialogUnknown.close();
+	enableScrolling();
 	unknvar = 0;
 });
 
 function showunkndlg(){
 	dialogUnknown.showModal();
+	disableScrolling();
+}
+
+function resetunkdlg(){
+	document.getElementById('minigameiframe').src = document.getElementById('minigameiframe').src;
 }
 
 function saveGame() {
@@ -1015,7 +1070,7 @@ function saveGame() {
 	localStorage.setItem("stalkersCost", JSON.stringify(stalkersCost));
 	localStorage.setItem("lunaticsCost", JSON.stringify(lunaticsCost));
 	localStorage.setItem("botCost", JSON.stringify(botCost));
-	localStorage.setItem("addClickCost", JSON.stringify(Math.floor(1000 * Math.pow(1.2,lpc))));
+	localStorage.setItem("addClickCost", JSON.stringify(addClickCost));
 	localStorage.setItem("hypeFollowersPurchased", JSON.stringify(hypeFollowersPurchased));
 	localStorage.setItem("hypeFansPurchased", JSON.stringify(hypeFansPurchased));
 	localStorage.setItem("hypePaparazzisPurchased", JSON.stringify(hypePaparazzisPurchased));
@@ -1090,9 +1145,9 @@ function loadGame() {
 	if (JSON.parse(localStorage.getItem("bots")) == null) {
 		bots = 0;
 	}
-	fanCost = JSON.parse(localStorage.getItem("fanCost"));
-	if (JSON.parse(localStorage.getItem("fanCost")) == null) {
-		fanCost = 10;
+	followerCost = JSON.parse(localStorage.getItem("followerCost"));
+	if (JSON.parse(localStorage.getItem("followerCost")) == null) {
+		followerCost = 10;
 	}
 	FansCost = JSON.parse(localStorage.getItem("FansCost"));
 	if (JSON.parse(localStorage.getItem("FansCost")) == null) {
@@ -1165,7 +1220,7 @@ function loadGame() {
 	
 	document.getElementById('followers').innerHTML = nf.format(followers);
 	document.getElementById('followerLPS').innerHTML = followerLPS;
-	document.getElementById('followerCost').innerHTML = nf.format(followerCost);
+	document.getElementById('followerCost').innerHTML = followerCost;
 	document.getElementById('fans').innerHTML = nf.format(fans);
 	document.getElementById('FansLPS').innerHTML = FansLPS;
 	document.getElementById('FansCost').innerHTML = nf.format(FansCost);
@@ -1399,11 +1454,6 @@ function enableDarkTheme() {
 	document.querySelector(".configoption15").style.border = "1px solid white";
 	document.querySelector(".configoption15").style.color = "white";
 	document.querySelector(".option15icon").style.color = "white";
-	
-	if (musicsEnabled == 1) {
-		document.querySelector('#HouseInAForestLoop').pause();
-		document.querySelector('#NoMoreMagic').play();
-	}
 }
 
 function disableDarkTheme() {
@@ -1530,11 +1580,6 @@ function disableDarkTheme() {
 	document.querySelector(".configoption15").style.border = "1px solid black";
 	document.querySelector(".configoption15").style.color = "black";
 	document.querySelector(".option15icon").style.color = "black";
-	
-	if (musicsEnabled == 1) {
-		document.querySelector('#NoMoreMagic').pause();
-		document.querySelector('#HouseInAForestLoop').play();
-	}
 }
 
 function enableDisableMusics() {
@@ -1548,7 +1593,7 @@ function enableDisableMusics() {
 		musicsdisabledcheckbox.style.visibility="hidden";
 		
 		musicsEnabled = 1;
-		manualDarkTheme();
+		document.querySelector('#HouseInAForestLoop').play();
 	} else if (musicsEnabled == 1) {
 		var musicsenabledcheckbox = document.getElementById("musicsenabled");
 		musicsenabledcheckbox.style.display="none";
@@ -1588,7 +1633,6 @@ if (JSON.parse(localStorage.getItem("musicsEnabled")) == 0) {
 
 function stopMusic() {
 	document.querySelector('#HouseInAForestLoop').pause();
-	document.querySelector('#NoMoreMagic').pause();
 }
 
 window.setInterval(function(){
@@ -1600,3 +1644,9 @@ window.setInterval(function(){
 var nextCostAddClick = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
 document.getElementById('addClickCost').innerHTML = nextCostAddClick;
 addClickCost = nf.format(Math.floor(1000 * Math.pow(1.2,lpc)));
+
+if (musicsEnabled == 1) {
+	document.querySelector('#HouseInAForestLoop').play();
+}
+
+loadGame();

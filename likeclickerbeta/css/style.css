@@ -339,3 +339,19 @@ body {
 #movebtn:focus {
 	outline: 0;
 }
+
+#reseteggbtn {
+	border: 1px solid black;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background 0.5s;
+	min-width: 50px;
+}
+
+#reseteggbtn:hover {
+	background:rgba(0,0,0,.1);
+}
+
+#reseteggbtn:focus {
+	outline: 0;
+}
