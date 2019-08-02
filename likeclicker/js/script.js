@@ -1421,6 +1421,7 @@ function enableDarkTheme() {
 	document.querySelector(".confighr4").style.border = "1px solid white";
 	document.querySelector(".confighr5").style.border = "1px solid white";
 	document.querySelector(".confighr6").style.border = "1px solid white";
+	document.querySelector(".confighr7").style.border = "1px solid white";
 	document.querySelector(".configoption1").style.border = "1px solid white";
 	document.querySelector(".configoption1").style.color = "white";
 	document.querySelector(".option1icon").style.color = "white";
@@ -1466,6 +1467,9 @@ function enableDarkTheme() {
 	document.querySelector(".configoption15").style.border = "1px solid white";
 	document.querySelector(".configoption15").style.color = "white";
 	document.querySelector(".option15icon").style.color = "white";
+	document.querySelector(".configoption16").style.border = "1px solid white";
+	document.querySelector(".configoption16").style.color = "white";
+	document.querySelector(".option16icon").style.color = "white";
 }
 
 function disableDarkTheme() {
@@ -1547,6 +1551,7 @@ function disableDarkTheme() {
 	document.querySelector(".confighr4").style.border = "1px solid black";
 	document.querySelector(".confighr5").style.border = "1px solid black";
 	document.querySelector(".confighr6").style.border = "1px solid black";
+	document.querySelector(".confighr7").style.border = "1px solid black";
 	document.querySelector(".configoption1").style.border = "1px solid black";
 	document.querySelector(".configoption1").style.color = "black";
 	document.querySelector(".option1icon").style.color = "black";
@@ -1592,6 +1597,9 @@ function disableDarkTheme() {
 	document.querySelector(".configoption15").style.border = "1px solid black";
 	document.querySelector(".configoption15").style.color = "black";
 	document.querySelector(".option15icon").style.color = "black";
+	document.querySelector(".configoption16").style.border = "1px solid black";
+	document.querySelector(".configoption16").style.color = "black";
+	document.querySelector(".option16icon").style.color = "black";
 }
 
 function enableDisableMusics() {
