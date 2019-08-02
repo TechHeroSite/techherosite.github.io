@@ -3,7 +3,8 @@
   "short_name": "Like Clicker",
   "description": "Play Like Clicker, the best clicker game in the world! Well... Not really...",
   "lang": "en-US",
-  "start_url": "/",
+  "start_url": "/likeclicker",
+  "scope": "/likeclicker",
   "display": "standalone",
   "orientation": "portrait",
   "icons": [
