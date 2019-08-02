@@ -45,83 +45,7 @@
 		<meta name="twitter:description" content="Play Like Clicker, the best clicker game in the world! Well... Not really...">
 		<meta name="twitter:image" content="https://techherosite.github.io/thumbs/likeclicker.jpg">
 		
-		<link rel='manifest' href='manifest.json'>
-		<script>
-		// This is the "Offline page" service worker
-
-const CACHE = "pwabuilder-page";
-
-// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
-const offlineFallbackPage = "ToDo-replace-this-name.html";
-
-// Install stage sets up the offline page in the cache and opens a new cache
-self.addEventListener("install", function (event) {
-  console.log("[PWA Builder] Install Event processing");
-
-  event.waitUntil(
-    caches.open(CACHE).then(function (cache) {
-      console.log("[PWA Builder] Cached offline page during install");
-
-      if (offlineFallbackPage === "ToDo-replace-this-name.html") {
-        return cache.add(new Response("TODO: Update the value of the offlineFallbackPage constant in the serviceworker."));
-      }
-
-      return cache.add(offlineFallbackPage);
-    })
-  );
-});
-
-// If any fetch fails, it will show the offline page.
-self.addEventListener("fetch", function (event) {
-  if (event.request.method !== "GET") return;
-
-  event.respondWith(
-    fetch(event.request).catch(function (error) {
-      // The following validates that the request was for a navigation to a new document
-      if (
-        event.request.destination !== "document" ||
-        event.request.mode !== "navigate"
-      ) {
-        return;
-      }
-
-      console.error("[PWA Builder] Network request Failed. Serving offline page " + error);
-      return caches.open(CACHE).then(function (cache) {
-        return cache.match(offlineFallbackPage);
-      });
-    })
-  );
-});
-
-// This is an event that can be fired from your page to tell the SW to update the offline page
-self.addEventListener("refreshOffline", function () {
-  const offlinePageRequest = new Request(offlineFallbackPage);
-
-  return fetch(offlineFallbackPage).then(function (response) {
-    return caches.open(CACHE).then(function (cache) {
-      console.log("[PWA Builder] Offline page updated from refreshOffline event: " + response.url);
-      return cache.put(offlinePageRequest, response);
-    });
-  });
-});
-</script>
-		<script>
-		if ("serviceWorker" in navigator) {
-  if (navigator.serviceWorker.controller) {
-    console.log("[PWA Builder] active service worker found, no need to register");
-  } else {
-    // Register the service worker
-    navigator.serviceWorker
-      .register("pwabuilder-sw.js", {
-        scope: "./"
-      })
-      .then(function (reg) {
-        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
-      });
-  }
-}
-</script>
-		<script type="text/javascript" src="js/install-pwa.js"></script>
+		
 	</head>
 	<body onload="loadGame()">
 		<div id="TopActionBar" style="width: 100%; background: white; height: 34px; border-bottom: 1px solid black; position: fixed; margin-top: -5px;">
@@ -142,9 +66,7 @@ self.addEventListener("refreshOffline", function () {
 					<span id="lps" data-toggle="tooltip" title="Number of Likes per Second">LPS: 0</span><br>
 					<span id="lpc" data-toggle="tooltip" title="Number of Likes per Click">LPC: 1</span><br>
 					<audio loop id="HouseInAForestLoop" src="music/HouseInAForestLoop.ogg"></audio>
-					<button onclick="install()">
-  Install
-</button>
+					<!--<button onclick="install()">Install</button>-->
 					<ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4528874180134576"
