@@ -79,8 +79,12 @@
     content: '\e80a';
 }
 
-.fontelloicons.icon-desktop:before {
+.fontelloicons.icon-windows:before {
     content: '\f17a';
+}
+
+.fontelloicons.icon-desktop:before {
+    content: '\e807';
 }
 
 .fontelloicons.icon-trash:before {
