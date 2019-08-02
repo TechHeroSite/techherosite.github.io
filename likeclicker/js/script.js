@@ -1421,7 +1421,7 @@ function enableDarkTheme() {
 	document.querySelector(".confighr4").style.border = "1px solid white";
 	document.querySelector(".confighr5").style.border = "1px solid white";
 	document.querySelector(".confighr6").style.border = "1px solid white";
-	document.querySelector(".confighr7").style.border = "1px solid white";
+	/*document.querySelector(".confighr7").style.border = "1px solid white";*/
 	document.querySelector(".configoption1").style.border = "1px solid white";
 	document.querySelector(".configoption1").style.color = "white";
 	document.querySelector(".option1icon").style.color = "white";
@@ -1467,9 +1467,9 @@ function enableDarkTheme() {
 	document.querySelector(".configoption15").style.border = "1px solid white";
 	document.querySelector(".configoption15").style.color = "white";
 	document.querySelector(".option15icon").style.color = "white";
-	document.querySelector(".configoption16").style.border = "1px solid white";
+	/*document.querySelector(".configoption16").style.border = "1px solid white";
 	document.querySelector(".configoption16").style.color = "white";
-	document.querySelector(".option16icon").style.color = "white";
+	document.querySelector(".option16icon").style.color = "white";*/
 }
 
 function disableDarkTheme() {
@@ -1551,7 +1551,7 @@ function disableDarkTheme() {
 	document.querySelector(".confighr4").style.border = "1px solid black";
 	document.querySelector(".confighr5").style.border = "1px solid black";
 	document.querySelector(".confighr6").style.border = "1px solid black";
-	document.querySelector(".confighr7").style.border = "1px solid black";
+	/*document.querySelector(".confighr7").style.border = "1px solid black";*/
 	document.querySelector(".configoption1").style.border = "1px solid black";
 	document.querySelector(".configoption1").style.color = "black";
 	document.querySelector(".option1icon").style.color = "black";
@@ -1597,9 +1597,9 @@ function disableDarkTheme() {
 	document.querySelector(".configoption15").style.border = "1px solid black";
 	document.querySelector(".configoption15").style.color = "black";
 	document.querySelector(".option15icon").style.color = "black";
-	document.querySelector(".configoption16").style.border = "1px solid black";
+	/*document.querySelector(".configoption16").style.border = "1px solid black";
 	document.querySelector(".configoption16").style.color = "black";
-	document.querySelector(".option16icon").style.color = "black";
+	document.querySelector(".option16icon").style.color = "black";*/
 }
 
 function enableDisableMusics() {
@@ -1670,22 +1670,3 @@ if (musicsEnabled == 1) {
 }
 
 loadGame();
-
-var btnAdd = document.getElementById("configoption16");
-btnAdd.addEventListener('click', (e) => {
-  // hide our user interface that shows our A2HS button
-  /*btnAdd.style.display = 'none';*/
-  document.querySelector('.InstallPWACategory').style.display = "none";
-  // Show the prompt
-  deferredPrompt.prompt();
-  // Wait for the user to respond to the prompt
-  deferredPrompt.userChoice
-    .then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
-      } else {
-        console.log('User dismissed the A2HS prompt');
-      }
-      deferredPrompt = null;
-    });
-});
