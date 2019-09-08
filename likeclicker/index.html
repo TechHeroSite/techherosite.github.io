@@ -11,6 +11,7 @@
 		<link rel="me" href="https://twitter.com/LikeClicker">
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/loading.js"></script>
 	<script>window.twttr = (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0],
     t = window.twttr || {};
@@ -58,6 +59,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="assets/web-icon.png">
 	</head>
 	<body onload="loadGame()">
+		<div id="loading"></div>
+		<div class="page">
 		<div id="TopActionBar" style="width: 100%; background: white; height: 34px; border-bottom: 1px solid black; position: fixed; margin-top: -5px;">
 			<div id="LikeTopBar" style="float: left; margin-left: 5px; padding-top: 3px;">
 				<i id="mini-like-icon" class="material-icons likelabelicon" style="vertical-align: text-top; color: black;">thumb_up</i>
@@ -640,5 +643,6 @@
 	</dialog>
 		<script src="js/dialog-polyfill.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
+		</div>
 	</body>
 </html>
